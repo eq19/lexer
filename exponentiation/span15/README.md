@@ -242,186 +242,160 @@ $True Prime Pairs:
 ![](https://github.com/eq19/maps/assets/8466209/938e3517-d66e-4f37-8488-f18a8b522f14)
 
 
-# Prime Identity
+# Power of Magnitude
 
-We are going to assign prime identity as a ***standard model*** that attempts to stimulate a quantum field model called ***[eQuantum](https://github.com/eq19)*** for _[the four (4) known fundamental forces](https://en.wikipedia.org/wiki/Fundamental_interaction)_.
-
-This presentation was inspired by [theoretical works](https://github.com/eq19/maps/files/13468466/OU1938-Y1.1.pdf) from _[Hideki Yukawa](https://en.wikipedia.org/wiki/Hideki_Yukawa)_ who in 1935 had predicted the existence of _[mesons as the carrier particles](https://en.wikipedia.org/wiki/Meson)_ of strong nuclear force.
-
-## Addition Zones
-
-Here we would like to explain the way of said prime identity on getting the [arithmetic expression](https://youtu.be/S9oPqBeSsZA) of an ***individual unit identity*** such as a taxicab number below.
-
-```note
-It is a taxicab number, and is variously known as Ramanujan's number and the Ramanujan-Hardy number, after an anecdote of the British mathematician _[GH Hardy](https://en.wikipedia.org/wiki/G._H._Hardy)_ when he visited Indian mathematician _[Srinivasa Ramanujan](https://en.wikipedia.org/wiki/Srinivasa_Ramanujan)_ in hospital _([Wikipedia](https://en.wikipedia.org/wiki/1729_(number)))_.
-```
-
-[![Ramanujan-Hardy number](https://user-images.githubusercontent.com/36441664/103107461-173c2b00-4671-11eb-962c-da7e9eab022e.png)](https://en.wikipedia.org/wiki/1729_(number))
-
-These three (3) number are [twin primes](https://en.wikipedia.org/wiki/Twin_prime). We called the pairs as _[True Prime Pairs](https://www.eq19.com/addition/file02.html#true-prime-pairs)_. Our scenario is mapping the distribution out of these pairs by taking the symmetrical behaviour of 36 as the smallest power (greater than 1) which is not a prime power.
-
-```tip
-The smallest square number expressible as the sum of **four (4) consecutive primes** in two ways (5 + 7 + 11 + 13 and 17 + 19) which are also **two (2) couples** of prime twins! _([Prime Curios!](https://en.wikipedia.org/wiki/1729_(number)](https://primes.utm.edu/curios/page.php?number_id=270)))_.
-```
-
-```scss
-$True Prime Pairs:
- (5,7), (11,13), (17,19)
- 
- layer|  i  |   f
- -----+-----+---------
-      |  1  | 5
-   1  +-----+
-      |  2  | 7
- -----+-----+---  } 36 » 6®
-      |  3  | 11
-   2  +-----+
-      |  4  | 13
- -----+-----+---------
-      |  5  | 17
-   3  +-----+     } 36 » 6®
-      |  6  | 19
- -----+-----+---------
-```
-
-Thus in short this is all about a method that we called as the ***[19 vs 18 Scenario](https://www.eq19.com/grammar/identition/#the-77-principles)*** of mapping [the quantum way](https://www.google.com/search?q=eQuantum) within a huge of [primes objects](https://github.com/eq19) (5 to 19) by [lexering](https://en.wikipedia.org/wiki/Lexer_generator) (11) the un[grammar](https://en.wikipedia.org/wiki/Grammar)ed feed (7) and [parsering](https://en.wikipedia.org/wiki/Comparison_of_parser_generators) (13) across [syntax](https://en.wikipedia.org/wiki/Syntax) (17). 
-
-***Φ(1,2,3) = Φ(6,12,18) = Φ(13,37,61)***
-
-```scss
-$True Prime Pairs:
-(5,7), (11,13), (17,19)
- 
-layer | node | sub |  i  |  f
-------+------+-----+----------
-      |      |     |  1  | 
-      |      |  1  +-----+          
-      |  1   |     |  2  | (5)
-      |      |-----+-----+
-      |      |     |  3  |
-  1   +------+  2  +-----+----
-      |      |     |  4  |
-      |      +-----+-----+
-      |  2   |     |  5  | (7)
-      |      |  3  +-----+
-      |      |     |  6  |
-------+------+-----+-----+------      } (36)
-      |      |     |  7  |
-      |      |  4  +-----+
-      |  3   |     |  8  | (11)
-      |      +-----+-----+
-      |      |     |  9  |
-  2   +------|  5  +-----+-----
-      |      |     |  10 |
-      |      |-----+-----+
-      |  4   |     |  11 | (13)
-      |      |  6  +-----+
-      |      |     |  12 |
-------+------+-----+-----+------------------
-      |      |     |  13 |
-      |      |  7  +-----+
-      |  5   |     |  14 | (17)
-      |      |-----+-----+
-      |      |     |  15 |
-  3   +------+  8  +-----+-----       } (36)
-      |      |     |  16 |
-      |      |-----+-----+
-      |  6   |     |  17 | (19)
-      |      |  9  +-----+
-      |      |     |  18 |
-------|------|-----+-----+------
-```
-
-The main background is that, as you may aware, the prime number theorem describes the [asymptotic distribution](https://youtu.be/j5s0h42GfvM) of prime numbers which is still a major problem in mathematic. 
-
-## Multiplication Zones
-
-Instead of a proved formula we came to a unique expression called ***zeta function***. This expression first appeared in a paper in 1737 entitled _Variae observationes circa series infinitas_. 
-
-```tip
-This expression states that the sum of the zeta function is equal to the product of the reciprocal of one minus the reciprocal of primes to the powers. But what has this got to do with the primes?  The answer is in the following product taken over the primes p (discovered by _[Leonhard Euler](https://en.wikipedia.org/wiki/Leonhard_Euler)_):
-```
-
-![zeta function](https://user-images.githubusercontent.com/8466209/219739322-ebdc1916-249a-49da-8ded-ce0fe1205550.png)
-
-This issue is actually come from ***[Riemann hypothesis](https://youtu.be/zlm1aajH6gY)***, a conjecture about the distribution of complex zeros of the Riemann zeta function that is considered to be ***the most important*** of _[unsolved problems](https://en.wikipedia.org/wiki/List_of_unsolved_problems_in_mathematics)_ in pure mathematics.
-
-```note
-In addition to the trivial roots, there also exist ***complex roots*** for real t. We find that the he first ten (10) non-trivial roots of the Riemann zeta function is occured when the values of t below 50. A plot of the values of ζ(1/2 + it) for t ranging from –50 to +50 is shown below. The roots occur each time ***the locus passes through the origin***. _([mathpages](https://www.mathpages.com/home/kmath738/kmath738.htm))_.
-```
-
-[![trivial roots](https://user-images.githubusercontent.com/8466209/219828222-615a2037-dbcd-4412-95bf-740bb32094de.png)](https://www.mathpages.com/home/kmath738/kmath738.htm)
-
-Meanwhile obtaining the non complex numbers it is easier to look at a graph like the one below which shows Li(x) (blue), R(x) (black), π(x) (red) and x/ln x (green); and then proclaim "R(x) is the best estimate of π(x)." Indeed it is for that range, but as we mentioned above, Li(x)-π(x) changes sign infinitely often, and near where it does, Li(x) would be the best value.
-
-[![non complex numbers](https://user-images.githubusercontent.com/8466209/219214486-e6412fb0-d190-45ae-990f-524532661444.png)](https://primes.utm.edu/howmany.html#better)
-
-And we can see in the same way that the function Li(x)-(1/2)Li(x1/2) is 'on the average' a better approximation than Li(x) to π(x); but no importance can be attached to the latter terms in Riemann's formula even by repeated averaging.
-
-## Exponentiation Zones
-
-The problem is that the contributions from the non-trivial zeros at times swamps that of any but the main terms in these expansions.
-
-```warning
-A. E. Ingham says it this way: Considerable importance was attached formerly to a function suggested by Riemann as an approximation to π(x)... This function represents π(x) with astonishing accuracy for all values of x for which π(x) has been calculated, but we now see that its superiority over Li(x) ***is illusory***... and for special values of x (as large as we please) the one approximation will deviate as widely as the other from the true value _([primes.utm.edu](https://primes.utm.edu/howmany.html#better))_.
-```
-
-[![howmany primes](https://user-images.githubusercontent.com/36441664/87958552-dea18f80-cadb-11ea-9499-6c2ee580a5ca.png)](https://primes.utm.edu/howmany.html#pnt)
-
-Moreover in it was verified numerically, in a rigorous way using interval arithmetic, that _[The Riemann hypothesis is true up to 3 · 10^12](https://arxiv.org/pdf/2004.09765.pdf)_. That is, all zeroes β+iγ of the Riemann zeta-function with 0<γ≤3⋅1012 have β=1/2.
-
-```danger
-We have Λ ≤ 0.2. The next entry is conditional on taking H a little higher than 10*13, which of course, is not achieved by Theorem 1. This would enable one to prove Λ < 0.19. Given that our value of H falls between the entries in this table, it is possible that some extra decimals could be wrought out of the calculation. We have not pursued this _([arXiv:2004.09765](https://arxiv.org/abs/2004.09765))_.
-```
-
-[![functional equation](https://user-images.githubusercontent.com/8466209/219715694-751fe538-378d-4f58-ae82-ac9e6823ad65.png)](https://arxiv.org/pdf/2004.09765.pdf)
-
-This Euler formula represents the distribution of a group of numbers that are positioned at regular intervals on a straight line to each other. Riemann later extended the definition of zeta(s) to all complex numbers (***except the simple pole at s=1 with residue one***). Euler's product still holds if the real part of s is greater than one. Riemann derived the functional equation of zeta function.
-
-```danger
-The Riemann zeta function has the trivial zeros at -2, -4, -6, ... (the poles of gamma(s/2)).  Using the Euler product (with the functional equation) it is easy to show that all the other zeros are in the critical strip of non-real complex numbers with 0 < Re(s) < 1, and that they are symmetric about the critical line Re(s)=1/2. The unproved Riemann hypothesis is that all of the nontrivial zeros are actually on the critical line _([primes.utm.edu](https://primes.utm.edu/notes/rh.html))_.
-```
-
-[![zeta function](https://user-images.githubusercontent.com/8466209/219720444-e5ba30ac-e000-4c85-8678-186676b93d2b.png)](https://primes.utm.edu/notes/rh.html)
-
-If both of the above statements are true then mathematically this Riemann Hypothesis is proven to be incorrect because it only applies to certain cases or limitations. So first of all the basis of the Riemann Hypothesis has to be considered.
-
-```warning
-The solution is not only to prove Re(z)= 1/2 but also to calculate ways for the imaginary part of the complex root of ζ(z)=0 and also to solve the functional equations. _([Riemann Zeta - pdf](https://www.maths.tcd.ie/pub/HistMath/People/Riemann/Zeta/EZeta.pdf))_
-```
-
-![QED vs QCD](https://github.com/eq19/maps/assets/8466209/5852976f-4e7e-45df-87a5-1fe5dfe6b63b)
-
-On the other hand, the possibility of obtaining the function of the distribution of prime numbers shall go backwards since it needs significant studies to be traced.
-
-Or may be [start again from the Euler Function](https://youtu.be/FCpRl0NzVu4).
-
-## Identition Zones
-
-While there are ***nine (9) possible*** combinations of color/anti-color pairs, due to symmetry considerations one of these combinations is eliminated. A gluon can effectively carry one of ***eight (8) possible*** color/anti-color combinations.
-
-[![color charge and confinement](https://github.com/eq19/maps/assets/8466209/5c0f29a2-b3ac-4f93-90bf-1b5bd7bf9558)](https://fafnir.phyast.pitt.edu/particles/color.html)
-
-We apply these generators to the rest of the space, and find that it breaks down into the SU(3)c representations of ***exactly three generations of quarks and leptons***.
-
-[![The-64-dimensional-octonionic-chain-algebra-splits-into-two-sets-of-SU-3-generators](https://github.com/eq19/maps/assets/8466209/9fb5e061-0e82-4c0d-980d-528932ff1f3f)](https://github.com/eq19/maps/files/14387513/Standard_model_physics_from_an_algebra.pdf)
-
-This 71 is a conformation that it has the same result as we have explained on the residual objects of 571 turn to a vektor of 71 while the rest of 500 turn to 200 objects of 3's identity and the last objects of 300 goes to the next cycles.
-
+For any model, squared amplitudes and Wilson coefficients can be calculated at the tree level or the one-loop level.
 
 ```tip
 {{ site.github.latest_release.body }}
 ```
 
-![default](https://user-images.githubusercontent.com/36441664/105903095-0e64bd80-6052-11eb-83ed-10190be497c5.png)
+Analytical expressions, squared amplitudes or Wilson coefficients are converted into C++ code in a self-contained library compiled independently.
 
-Nothing is going to be easly about the nature of prime numbers but they demonstrably congruent to something organized. Let's discuss starting with the _[addition zones](https://www.eq19.com/addition/)_.
+## Phenomenological Analysis
 
-**[eQuantum Project](https://github.com/eq19)**   
-Copyright © 2023-2024
+This code can therefore be used for numerical evaluation in different scenarios to perform a phenomenological analysis.
 
-Reference:
-* [Riemann Zeta](https://commons.wikimedia.org/wiki/File:RiemannZeta_Zeros.svg)
-* [Mersenne Prime](https://en.wikipedia.org/wiki/Mersenne_prime)
-* [The Prime Hexagon](https://youtu.be/fQL4KRH3wUQ)
-* [The Primes Demystified](https://www.primesdemystified.com/First1000Primes.html)
+```note
+***The number 120 = MEC30 x 4 has 32 prime positions minus 5 prime number products = 27 prime numbers***. The information of the prime number products translates our theory into a checkerboard-like pattern using the finite 8 prime positions from the MEC 30, we call it Ikon. 8 × 8 primary positions = 64 primary positions of the checkerboard icon.
+```
+
+[![Hebrew numerals](https://github.com/eq19/maps/assets/8466209/bfc54f9e-6194-4ff9-b4c2-d83fbde3c94f)](https://en.wikipedia.org/wiki/Hebrew_numerals)
+
+```note
+Note that the hexagon in the middle has 37 circles and the total figure, a star of David has 73. For this one you go around one point of the pattern in a circle until you go past a letter that you have already covered. For instance in B-R-A-Sh you will have to switch the position for the Sh because it moves more than through the alphabet. S-I-T does the same with the T.
+```
+
+[![Torah geometri](https://user-images.githubusercontent.com/8466209/285325173-4f017a5d-3f2b-47d6-852d-6a2e8c5b8e50.png)](https://allmynoodles.com/torah-geometry/)
+
+## Composite Contribution 
+
+The above seven (7) primes will act then as ***[extended branes](https://en.m.wikipedia.org/wiki/D-brane)***. This is what we mean by ***addition zones*** and it happens whenever a cycle is restarted.
+
+```txt
+$True Prime Pairs:
+(5,7), (11,13), (17,19)
+ 
+layer | node | sub |  i  |  f.                                       MEC 30 / 2
+------+------+-----+-----+------      ‹------------------------------ 0 {-1/2}
+      |      |     |  1  | --------------------------
+      |      |  1  +-----+                           |    
+      |  1   |     |  2  | (5)                       |
+      |      |-----+-----+                           |
+      |      |     |  3  |                           |
+  1   +------+  2  +-----+----                       |
+      |      |     |  4  |                           |
+      |      +-----+-----+                           |
+      |  2   |     |  5  | (7)                       |
+      |      |  3  +-----+                           |
+      |      |     |  6  |                          11s ‹-- ∆28 = (71-43)
+------+------+-----+-----+------      } (36)         |
+      |      |     |  7  |                           |
+      |      |  4  +-----+                           |
+      |  3   |     |  8  | (11)                      |
+      |      +-----+-----+                           |
+      |      |     |  9  |‹-- ∆9 = (89-71) / 2       |
+  2   +------|  5* +-----+-----                      |
+      |      |     |  10 |                           |
+      |      |-----+-----+                           |
+      |  4   |     |  11 | (13) --------------------- 
+      |      |  6  +-----+            ‹------------------------------ 15 {0}
+      |      |     |  12 |---------------------------
+------+------+-----+-----+------------               |
+      |      |     |  13 |                           |
+      |      |  7  +-----+                           |
+      |  5   |     |  14 | (17)                      |
+      |      |-----+-----+                           |
+      |      |     |  15 |                           7 x 24 = 168 ✔️
+  3*  +------+  8  +-----+-----       } (36)         |
+      |      |     |  16 |                           |
+      |      |-----+-----+                           |
+      |  6   |     |  17 | (19)                      |
+      |      |  9  +-----+                           |
+      |      |     |  18 | -------------------------- 
+------|------|-----+-----+-----  ‹----------------------------------- 30 {+1/2}
+```
+
+This scheme goes to the unification of 11s with 7s to 18s meanwhile the 11th it self behave as residual by the 5th minor hexagon between the ***[30 to 36' cells](https://www.eq19.com/exponentiation/#fundamental-forces)***.
+
+![74550123-6dd1d680-4f83-11ea-8810-3b8f4f50a9c0](https://github.com/eq19/maps/assets/8466209/dd0a99e5-07e6-43ab-aa07-47c49f963220)
+
+```txt
+ 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 | 14 | 15 | 16 | 17 | 18
+---+---+---+---+---+---+---+---+---+----+----+----+----+----+----+----+----+----
+ 19| 20| 21| 22| 23| 24| 25|
+---+---+---+---+---+---+---+
+ - | - | - | 28| 29|
+```
+
+By _[The Δ(19 vs 18) Scenario](https://www.eq19.com/identition/#%CE%B419-vs-18-scenario)_ those three are exactly landed in the ***0's cell*** out of Δ18. See that the sum of 30 and 36 is 66 while the difference between 36 and 102 is also 66.
+
+```note
+You likely noticed I began with 2 rather than 1 or 0 when I first constructed the hexagon. Why? Because they do not fit inside — they stick off the hexagon like a tail. Perhaps that’s where they belong. However, if one makes a significant and interesting assumption, then 1 and 0 fall in their logical locations – in the 1 and 0 cells, respectively. _([HexSpin](https://www.hexspin.com/0-1-and-negative-numbers/))
+```
+
+***0 + 30 + 36 + 102 = 168 = π(1000)***
+
+[![19 vs 18](https://github.com/eq19/maps/assets/8466209/19f68eca-c0e1-48fc-9c9a-60d01cf26057)](https://www.hexspin.com/0-1-and-negative-numbers/)
+
+```txt
+ 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 | 14 | 15 | 16 | 17 
+---+---+---+---+---+---+---+---+---+---+----+----+----+----+----+----+----+----
+ - | - | 20| 21| 22| 23| 24| 25|
+---+---+---+---+---+---+---+
+ - | - | - | - | 28| 29|
+---+---+---+---+---+---+
+ 30| 31|
+---+---+
+ 36|
+```
+
+```tip
+This behaviour finaly brings us to a suggestion that the dimension in string theory are linked with ***the prime distribution level*** as indicated by the _[self repetition](https://www.eq19.com/exponentiation/#self-repetition)_ on MEC30.
+```
+
+***7th spin - 4th spin = (168 - 102)s = 66s = 6 x 11s = 30s + 36s***
+
+![IMG_20231221_074421](https://github.com/eq19/maps/assets/8466209/1e7dc443-b7d8-44d9-8da0-5fe50dd7ee70)
+
+```txt
+p r i m e s
+1 0 0 0 0 0
+2 1 0 0 0 1 ◄--- #29 ◄--- #61 👈 1st spin ✔️
+3 2 0 1 0 2 👉 2
+4 3 1 1 0 3 👉 89 - 29 = 61 - 1 = 60
+5 5 2 1 0 5 👉 11 + 29 = 37 + 3 = 40 
+          6 👉 11s Composite Partition ◄--- 102 👈 4th spin ✔️
+6 7 3 1 0 7 ◄--- #23
+7 11 4 1 0 11 ◄--- #19
+8 13 5 1 0 13 ◄--- # 17 ◄--- #49
+9 17 0 1 1 17 ◄--- 7th prime
+           18 👉 7s Composite Partition ◄--- 168 👈 7th spin ✔️
+10 19 1 1 1 ∆1 ◄--- 0th ∆prime ◄--- Fibonacci Index #18
+-----
+11 23 2 1 1 ∆2 ◄--- 1st ∆prime ◄--- Fibonacci Index #19 ◄--- #43
+..
+..
+40 163 5 1 0 ∆31 ◄- 11th ∆prime ◄-- Fibonacci Index #29 👉 11
+-----
+41 167 0 1 1 ∆0
+42 173 0 -1 1 ∆1
+43 179 0 1 1 ∆2 ◄--- ∆∆1
+44 181 1 1 1 ∆3 ◄--- ∆∆2 ◄--- 1st ∆∆prime ◄--- Fibonacci Index #30
+..
+..
+100 521 0 -1 2 ∆59 ◄--- ∆∆17 ◄--- 7th ∆∆prime ◄--- Fibonacci Index #36  👉 7s
+-----
+```
+
+It will be forced back to Δ19 making a cycle that bring back **the 12 to → 13** of 9 collumns and replicate _[The Scheme 13:9](https://gist.github.com/eq19/0ce5848f7ad62dc46dedfaa430069857#scheme-139)_ through **(i=9,k=13)=9x3=27** with entry form of (100/50=2,60,40) as below:
+
+![default](https://user-images.githubusercontent.com/8466209/201015369-c6ba5c75-c2c7-415b-b424-debaa5c7f64a.png)
+
+The 10 ranks will coordinate with the 18 to raise up the symmetrical behaviour of 12+24=36 which is prime pair 17+19=36 and let the 2 and 3 out of 2,3,5,7 to begin a new cycle while the 5,7 will pair the 11,13 and 17,19 as _[True Prime Pairs](https://www.eq19.com/addition/file02.html#true-prime-pairs)_.
+
+```note
+I like that 0 can occupy a center point.  Incidentally, this circular shape minus all my numbers and colors s has been called Seed of Life / Flower of Life by certain New Age groups who claim it has a sacred geometry.  Please don’t see this as an endorsement of any spiritual group or religion. _([Prime Hexagon - Circulat Form](https://www.hexspin.com/circular/))_
+```
+
+[![image](https://user-images.githubusercontent.com/8466209/249753773-abe68727-cc33-4efa-a1be-23dd66141297.png)](https://www.hexspin.com/circular/)
