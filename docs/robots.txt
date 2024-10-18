@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: /lexer/sitemap_index.xml
