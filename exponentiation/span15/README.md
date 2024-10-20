@@ -241,7 +241,6 @@ $True Prime Pairs:
 
 ![](https://github.com/eq19/maps/assets/8466209/938e3517-d66e-4f37-8488-f18a8b522f14)
 
-
 # Power of Magnitude
 
 For any model, squared amplitudes and Wilson coefficients can be calculated at the tree level or the one-loop level.
