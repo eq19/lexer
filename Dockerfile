@@ -18,12 +18,10 @@ ENV PIP_ROOT_USER_ACTION=ignore
 ADD . /home/runner
 WORKDIR /home/runner
 #ADD hooks /opt/runner
-#COPY *.txt /tmp/apt-get/
-#ADD _site /home/runner/_site
-#ADD scripts /home/runner/scripts
 #RUN mkdir -p $AGENT_TOOLSDIRECTORY
 RUN chmod +x /home/runner/hooks/*.sh
 RUN chmod +x /home/runner/scripts/*.sh
+RUN chmod +x /home/runner/configure.sh 
 COPY conf/*.conf /etc/supervisor/conf.d/
 RUN chmod 644 /etc/supervisor/conf.d/*.conf
 
