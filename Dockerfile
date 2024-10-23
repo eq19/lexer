@@ -17,7 +17,6 @@ ENV PIP_ROOT_USER_ACTION=ignore
 
 ADD . /home/runner
 WORKDIR /home/runner
-RUN chmod +x /home/runner/*.sh 
 RUN chmod +x /home/runner/hooks/*.sh
 RUN chmod +x /home/runner/scripts/*.sh
 COPY conf/*.conf /etc/supervisor/conf.d/
@@ -48,7 +47,6 @@ RUN cd /tmp && wget http://archive.ubuntu.com/ubuntu/pool/main/o/openssl/libssl1
     dpkg -i libssl1.1_1.1.1f-1ubuntu2_amd64.deb
 
 # Install dependencies
-#RUN curl -fsSL https://get.docker.com -o- | sh
 RUN gem install faraday-retry github-pages --platform=ruby
 RUN npm install --package-lock-only redis talib pg mathjs gauss moxygen && \
     npm ci && npm cache clean --force
@@ -59,7 +57,6 @@ RUN GH_RUNNER_VERSION=${GH_RUNNER_VERSION:-$(curl --silent "https://api.github.c
     tar -zxf actions-runner-linux-x64-$GH_RUNNER_VERSION.tar.gz && \
     rm -f actions-runner-linux-x64-$GH_RUNNER_VERSION.tar.gz && \
     ./bin/installdependencies.sh && \
-    #./home/runner/configure.sh && \
     chown -R root: /home/runner && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
