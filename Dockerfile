@@ -9,6 +9,7 @@ ENV RUNNER_REPOSITORY_URL=""
 ENV RUNNER_ALLOW_RUNASROOT="1"     
 ENV RUNNER_WORK_DIRECTORY="_work"
 
+ARG GH_RUNNER_VERSION
 ENV GITHUB_ACCESS_TOKEN=""
 ENV PGLOG log_statement=all
 ENV PIP_BREAK_SYSTEM_PACKAGES=1
@@ -57,7 +58,6 @@ RUN npm install --package-lock-only redis talib pg mathjs gauss moxygen && \
     npm ci && npm cache clean --force
 #RUN cmake -S . -B build -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=./.install
 
-ARG GH_RUNNER_VERSION
 RUN GH_RUNNER_VERSION=${GH_RUNNER_VERSION:-$(curl --silent "https://api.github.com/repos/actions/runner/releases/latest" | grep tag_name | sed -E 's/.*"v([^"]+)".*/\1/')} && \
     curl -L -O https://github.com/actions/runner/releases/download/v$GH_RUNNER_VERSION/actions-runner-linux-x64-$GH_RUNNER_VERSION.tar.gz && \
     tar -zxf actions-runner-linux-x64-$GH_RUNNER_VERSION.tar.gz && \
