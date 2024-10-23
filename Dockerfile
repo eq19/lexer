@@ -26,8 +26,6 @@ RUN chmod +x /home/runner/scripts/*.sh
 COPY conf/*.conf /etc/supervisor/conf.d/
 RUN chmod 644 /etc/supervisor/conf.d/*.conf
 
-#ENV TARGET_REPOSITORY=/target/repository
-#ENV AGENT_TOOLSDIRECTORY=/opt/hostedtoolcache
 #ENV ACTIONS_RUNNER_REQUIRE_JOB_CONTAINER=false
 #ENV ACTIONS_RUNNER_CONTAINER_HOOKS=/opt/runner/index.js
 ENV ACTIONS_RUNNER_HOOK_JOB_STARTED=/home/runner/hooks/job_started.sh
