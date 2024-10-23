@@ -13,18 +13,25 @@ ENV GITHUB_ACCESS_TOKEN=""
 ENV PGLOG log_statement=all
 ENV PIP_BREAK_SYSTEM_PACKAGES=1
 ENV PIP_ROOT_USER_ACTION=ignore
+
+ADD . /home/runner
+WORKDIR /home/runner
+#ADD hooks /opt/runner
+#COPY *.txt /tmp/apt-get/
+#ADD _site /home/runner/_site
+#ADD scripts /home/runner/scripts
+#RUN mkdir -p $AGENT_TOOLSDIRECTORY
+RUN chmod +x /home/runner/hooks/*.sh
+RUN chmod +x /home/runner/scripts/*.sh
+COPY conf/*.conf /etc/supervisor/conf.d/
+RUN chmod 644 /etc/supervisor/conf.d/*.conf
+
 #ENV TARGET_REPOSITORY=/target/repository
 #ENV AGENT_TOOLSDIRECTORY=/opt/hostedtoolcache
-
 #ENV ACTIONS_RUNNER_REQUIRE_JOB_CONTAINER=false
 #ENV ACTIONS_RUNNER_CONTAINER_HOOKS=/opt/runner/index.js
-ENV ACTIONS_RUNNER_HOOK_JOB_STARTED=/opt/runner/job_started.sh
-ENV ACTIONS_RUNNER_HOOK_JOB_COMPLETED=/opt/runner/job_completed.sh
-
-ADD hooks /opt/runner
-COPY *.txt /tmp/apt-get/
-RUN chmod +x /opt/runner/*.sh
-#RUN mkdir -p $AGENT_TOOLSDIRECTORY
+ENV ACTIONS_RUNNER_HOOK_JOB_STARTED=/home/runner/hooks/job_started.sh
+ENV ACTIONS_RUNNER_HOOK_JOB_COMPLETED=/home/runner/hooks/job_completed.sh
 
 LABEL maintainer="me@eq19.com" \
     org.label-schema.schema-version="1.0" \
@@ -38,16 +45,12 @@ LABEL maintainer="me@eq19.com" \
     org.label-schema.docker.cmd="docker run -it tcardonne/github-runner:latest"
 
 RUN DEBIAN_FRONTEND=noninteractive apt-get update && \
-    sed "s/#.*//" /tmp/apt-get/requirements.txt | xargs apt-get install -y && \
+    sed "s/#.*//" /home/runner/requirements.txt | xargs apt-get install -y && \
     apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # Find the most recent 1.1 libssl package in the ubuntu archives
 RUN cd /tmp && wget http://archive.ubuntu.com/ubuntu/pool/main/o/openssl/libssl1.1_1.1.1f-1ubuntu2_amd64.deb && \
     dpkg -i libssl1.1_1.1.1f-1ubuntu2_amd64.deb
-  
-WORKDIR /home/runner
-ADD _site /home/runner/_site
-ADD scripts /home/runner/scripts
 
 # Install dependencies
 #RUN curl -fsSL https://get.docker.com -o- | sh
@@ -65,9 +68,5 @@ RUN GH_RUNNER_VERSION=${GH_RUNNER_VERSION:-$(curl --silent "https://api.github.c
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
-RUN chmod +x /home/runner/scripts/*.sh
 ENTRYPOINT ["/home/runner/scripts/entrypoint.sh"]
-
-COPY conf/*.conf /etc/supervisor/conf.d/
-RUN chmod 644 /etc/supervisor/conf.d/supervisord.conf
 CMD ["/usr/bin/supervisord", "-c", "/etc/supervisor/conf.d/supervisord.conf"]
