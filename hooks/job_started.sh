@@ -10,13 +10,13 @@ getent group
 echo -e "\n$hr\nService Status\n$hr"
 service --status-all
 
+echo -e "\n$hr\nOperation System\n$hr"
+cat /etc/os-release
+
 echo -e "\n$hr\nIdentity\n$hr"
 whoami
 id
 ls -al $HOME
-
-echo -e "\n$hr\nOperation System\n$hr"
-cat /etc/os-release
 
 echo -e "\n$hr\nDisk Structure\n$hr"
 df -h
