@@ -22,7 +22,7 @@ echo -e "\n$hr\nDisk Structure\n$hr"
 df -h
 
 echo -e "\n$hr\nRunner 🏠 dir\n$hr"
-ls -al /home/runner && ls -al /home/runner/_site
+ls -al /home/runner
 
 echo -e "\n$hr\nSupervisor\n$hr"
 apt-cache show supervisor
