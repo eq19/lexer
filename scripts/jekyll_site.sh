@@ -3,6 +3,9 @@
 
 hr='------------------------------------------------------------------------------------'
 
+echo -e "\n$hr\nSource ⚧️ dir\n$hr"
+ls -al /home/runner/_site
+
 set -a && . /home/runner/_site/.env && set +a
 cd /home/runner/_site && rm -rf .env action.yml
 
