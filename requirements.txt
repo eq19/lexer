@@ -1,7 +1,6 @@
 apt-transport-https
 build-essential
 ca-certificates
-cmake
 curl
 #docker.io
 doxygen
