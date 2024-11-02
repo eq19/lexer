@@ -28,11 +28,11 @@ else
 fi
 
 echo -e "\n$hr\nFinal Docs\n$hr"
-ls -al /home/runner/_site/docs
 TOKEN=$(/mnt/disks/platform/usr/bin/gcloud auth print-identity-token)
 curl -s -X POST https://us-central1-feedmapping.cloudfunctions.net/function \
   -H "Authorization: Bearer ${TOKEN}" -H "Content-Type: application/json" \
   --data @/home/runner/_site/docs/data.json | jq '.' > /home/runner/_site/_data/docs.json
+ls -al /home/runner/_site/docs && /home/runner/_site/.github/entrypoint/remote.sh
 
 echo -e "\n$hr\nNext Workflow\n$hr"
 cd /home/runner/_site && git fetch && git add .
