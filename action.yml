@@ -61,6 +61,7 @@ runs:
         credentials: ${{ inputs.credentials }}
         action_path: ${{ github.action_path }}
         image_name: ${{ inputs.image_name }}
+        id: ${{ inputs.id }}
 
     - name: Profiling Feedback
       if: runner.os == 'Windows'
