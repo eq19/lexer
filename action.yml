@@ -43,6 +43,9 @@ outputs:
   id:
     description: The site id
     value: ${{ steps.build.outputs.site_id}}
+  repo:
+    description: 'The target repository'
+    value: ${{ env.TARGET_REPOSITORY }}
 
 runs:
   using: composite
