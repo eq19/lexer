@@ -47,7 +47,7 @@ RUN cd /tmp && wget http://archive.ubuntu.com/ubuntu/pool/main/o/openssl/libssl1
     dpkg -i libssl1.1_1.1.1f-1ubuntu2_amd64.deb
 
 # Install dependencies
-RUN gem install faraday-retry github-pages --platform=ruby
+#RUN gem install faraday-retry github-pages --platform=ruby
 RUN npm install --package-lock-only redis talib pg mathjs gauss moxygen && \
     npm ci && npm cache clean --force
 #RUN cmake -S . -B build -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=./.install
