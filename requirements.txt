@@ -19,7 +19,7 @@ openssh-client
 #postgresql
 #python3-pip
 #redis-server
-ruby-full
+#ruby-full
 software-properties-common
 sudo
 supervisor
