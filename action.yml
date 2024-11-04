@@ -43,9 +43,7 @@ outputs:
   id:
     description: The site id
     value: ${{ steps.build.outputs.site_id}}
-  repo:
-    description: 'The target repository'
-    value: ${{ steps.build.outputs.output_1}}
+  repo: ${{ join(steps.build.outputs.*, '\n') }}
 
 runs:
   using: composite
