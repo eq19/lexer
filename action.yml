@@ -35,8 +35,8 @@ inputs:
   base:
     description: The path to .github folder
     required: true
-  tmp:
-    description: The path according to os
+  id:
+    description: The id according to os
     required: true
 
 outputs:
