@@ -40,8 +40,10 @@ inputs:
     required: true
 
 outputs:
-  description: 'The command.outputs'
-  value: ${{ steps.*.outputs.* }}
+  addition:
+    value: ${{ join(steps.addition.outputs.*, '\n') }}
+  multiplication:
+    value: ${{ join(steps.multiplication.outputs.*, '\n') }}
 
 runs:
   using: composite
@@ -49,7 +51,7 @@ runs:
     - name: Target Configuration
       if: runner.os == 'Linux'
       uses: eq19/eq19/.github/actions/1-addition/3-lexer@v1
-      id: build
+      id: addition
       with:
         hub_username: ${{ inputs.docker_hub_username }}
         hub_password: ${{ inputs.docker_hub_password }}
@@ -62,6 +64,7 @@ runs:
     - name: Profiling Feedback
       if: runner.os != 'Linux'
       uses: eq19/eq19/.github/actions/2-multiplication/3-lexer@v1
+      id: multiplication
       with:
         token: ${{ inputs.token }}
         image_name: ${{ inputs.image_name }}
