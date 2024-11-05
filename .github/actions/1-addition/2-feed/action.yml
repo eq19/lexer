@@ -148,4 +148,3 @@ runs:
             echo "deleted: ${{ inputs.image_name }}:${array[$i]}"
           fi
         done
-        echo ${{ toJSON(steps.*.outputs) }}
