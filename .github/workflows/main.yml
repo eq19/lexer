@@ -87,7 +87,7 @@ jobs:
           initiate_pauli_sum: ${{ toJSON(steps.feed-mapping.outputs) }}
 
     outputs:
-      description: 🏃‍♂️ Simulate Gell-Mann
+      #🏃‍♂️ Simulate Gell-Mann
       value: ${{ toJSON(steps.*.outputs) }}
 
   parsering:
