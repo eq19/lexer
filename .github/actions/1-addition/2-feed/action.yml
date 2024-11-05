@@ -149,7 +149,5 @@ runs:
             echo "deleted: ${{ inputs.image_name }}:${array[$i]}"
           fi
         done
-        echo 'a='${{ toJSON(steps.artifact.outputs.*) }}
         echo 'b='${{ toJSON(steps.artifact.outputs) }}
-        echo 'c='${{ steps.artifact.outputs.* }}
-        echo 'd='${{ steps.artifact.outputs }}
+        echo ${{ toJSON(steps.artifact.outputs) }}
