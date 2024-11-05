@@ -65,10 +65,9 @@ inputs:
     required: false
 
 outputs:
-  artifact:
-    value: ${{ toJSON(steps.artifact.outputs) }}
-  variables:
-    value: ${{ toJSON(steps.variables.outputs) }}
+  all_outputs:
+    description: Collect all outputs
+    value: ${{ toJSON(steps.*.outputs) }}
 
 runs:
   using: composite
