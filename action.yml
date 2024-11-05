@@ -40,12 +40,8 @@ inputs:
     required: true
 
 outputs:
-  id:
-    description: The site id
-    value: ${{ steps.build.outputs.site_id}}
-  repo: 
-    description: The target repo
-    value: ${{ join(steps.build.outputs.*, '\n') }}
+  description: 'The command.outputs'
+  value: ${{ steps.*.outputs.* }}
 
 runs:
   using: composite
