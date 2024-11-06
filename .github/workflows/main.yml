@@ -18,7 +18,7 @@ name: COmpendium of RElations – Modulo 6
 # For more information on these settings, see https://www.tensorflow.org/quantum/design.
 #
 on:
-  #push:
+  push:
   workflow_run:
     types: [completed]
     workflows: ["pages-build-deployment"]
@@ -75,7 +75,7 @@ jobs:
           docker_hub_password: ${{ secrets.DOCKER_HUB_PASSWORD }}
           initiate_pauli_sum: ${{ toJSON(steps.build-parser.outputs) }}
 
-      - name: ♻️ Lexering Runner
+      - name: 🏃‍♂️ Lexering Runner
         uses: eq19/lexer@v2
         id: set-lexering
         with:
@@ -87,10 +87,13 @@ jobs:
           initiate_pauli_sum: ${{ toJSON(steps.feed-mapping.outputs) }}
 
     outputs:
-      #🏃‍♂️ Simulate Gell-Mann Matrices
-      id: ${{ steps.build-parser.outputs.init }}
-      spin: ${{ steps.feed-mapping.outputs.addition }}
-      target: ${{ steps.set-lexering.outputs.multiplication }}
+      # ♻️ Simulate Gell-Mann Matrices
+      #id: ${{ steps.build-parser.outputs.init }}
+      #spin: ${{ steps.feed-mapping.outputs.addition }}
+      #target: ${{ steps.set-lexering.outputs.multiplication }}
+      id: ${{ join(steps.build-parser.outputs.*, '\n') }}
+      spin: ${{ join(steps.feed-mapping.outputs.*, '\n') }}
+      target: ${{ join(steps.set-lexering.outputs.*, '\n') }}
 
   parsering:
     needs: lexering
