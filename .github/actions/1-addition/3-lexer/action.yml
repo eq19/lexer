@@ -68,9 +68,12 @@ inputs:
     required: true
 
 outputs:
-  all_outputs:
-    description: Collect all outputs
-    value: ${{ toJSON(steps.*.outputs) }}
+  artifact:
+    description: Collect artifact outputs
+    value: ${{ toJSON(steps.artifact.outputs) }}
+  variables:
+    description: Collect variables outputs
+    value: ${{ toJSON(steps.variables.outputs) }}
 
 runs:
   using: composite
@@ -90,7 +93,7 @@ runs:
 
     - name: 🚀 Initiate Lexer
       uses: devcontainers/ci@v0.3
-      id: set-output
+      id: artifact
       with:
         push: always
         imageTag: id-${{ env.ID }}
