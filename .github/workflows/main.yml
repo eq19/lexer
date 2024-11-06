@@ -91,15 +91,14 @@ jobs:
         shell: bash
         run: |
           id="${{ matrix.config.id }}"
-          spin="${{ steps.feed-mapping.outputs.addition }}"
-          target="${{ steps.set-lexering.outputs.multiplication }}"   
-          echo "output_${id}=${{ $id == 1 && $spin || $target }}" >> "$GITHUB_OUTPUT"
+          set=${{ matrix.config.id == 1 &&
+            steps.feed-mapping.outputs.addition ||
+            steps.set-lexering.outputs.multiplication }}
+          echo "output_${id}=${set}" >> $GITHUB_OUTPUT
 
     outputs:
       # ♻️ Simulate Gell-Mann Matrices
       #id: ${{ steps.build-parser.outputs.init }}
-      #spin: ${{ steps.feed-mapping.outputs.addition }}
-      #target: ${{ steps.set-lexering.outputs.multiplication }}
       spin: ${{ steps.gen_output.outputs.output_1 }}
       target: ${{ steps.gen_output.outputs.output_2 }}
 
