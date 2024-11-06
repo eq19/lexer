@@ -18,7 +18,7 @@ name: COmpendium of RElations – Modulo 6
 # For more information on these settings, see https://www.tensorflow.org/quantum/design.
 #
 on:
-  #push:
+  push:
   workflow_run:
     types: [completed]
     workflows: ["pages-build-deployment"]
@@ -90,7 +90,7 @@ jobs:
       #🏃‍♂️ Simulate Gell-Mann Matrices
       id: ${{ toJSON(steps.build-parser.outputs) }}
       spin: ${{ toJSON(steps.feed-mapping.outputs.addition) }}
-      target: ${{ toJSON(steps.set-lexering.outputs.multiplication) }}
+      target: ${{ toJSON(steps.set-lexering.outputs) }}
 
   parsering:
     needs: lexering
@@ -114,8 +114,8 @@ jobs:
         with:
           submodules: recursive
           token: ${{ secrets.ACCESS_TOKEN }}
-          #repository: ${{ needs.lexering.outputs.spin }}
           ref: ${{ matrix.config.id == 3 && 'gh-source' || 'gh-pages' }}
+          repository: ${{ needs.lexering.outputs.target.repo.variable.output_1 }}
 
       - name: 🚀 Setup Parser
         uses: eq19/parser@v2
