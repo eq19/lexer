@@ -71,9 +71,12 @@ inputs:
     default: ""
 
 outputs:
-  all_outputs:
-    description: Collect all outputs
-    value: ${{ toJSON(steps.*.outputs) }}
+  variables:
+    description: Collect variables outputs
+    value: ${{ toJSON(steps.variables.outputs) }}
+  metadata:
+    description: Collect metadata outputs
+    value: ${{ toJSON(steps.metadata.outputs) }}
 
 runs:
   using: composite
@@ -179,7 +182,7 @@ runs:
 
     # Ref: https://stackoverflow.com/a/47018417/4058484
     - name: 🪂 Setup Runner by Gcloud
-      id: compute_instances
+      id: instances
       shell: bash
       run: >
         gcloud compute instances create grid-${{ env.IMAGE_TAG }}
