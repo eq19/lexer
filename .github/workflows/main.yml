@@ -32,6 +32,37 @@ concurrency:
 permissions: write-all
         
 jobs:
+
+  job1:
+    strategy:
+      matrix:
+        config:
+          - { os: ubuntu-latest, id: 1 }
+          - { os: macos-latest, id: 2 }
+    runs-on: ${{ matrix.config.os }}
+    steps:
+      - name: Generate output
+        id: gen_output
+        shell: bash
+        run: |
+          id="${{ matrix.config.id }}"
+          echo "output_${id}=${id}" >> "$GITHUB_OUTPUT"
+    outputs:
+      output_1: ${{ steps.gen_output.outputs.output_1 }}
+      output_2: ${{ steps.gen_output.outputs.output_2 }}
+
+  job2:
+    runs-on: windows-latest
+    needs: [job1]
+    steps:
+      # Will show
+      # {
+      #   "output_1": "1",
+      #   "output_2": "2",
+      # }
+      - shell: bash
+        run: echo '${{ toJSON(needs.job1.outputs) }}'  
+
   lexering:
     strategy:
       max-parallel: 1
