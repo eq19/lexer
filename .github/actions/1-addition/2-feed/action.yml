@@ -67,7 +67,7 @@ inputs:
 outputs:
   artifact:
     description: Collect artifact outputs
-    value: ${{ toJSON(steps.artifact.outputs) }}
+    value: ${{ toJSON(steps.artifact.outputs.repo) }}
   set_output:
     description: Collect set_output outputs
     value: ${{ toJSON(steps.set_output.outputs) }}
