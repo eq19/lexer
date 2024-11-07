@@ -18,7 +18,7 @@ name: COmpendium of RElations – Modulo 6
 # For more information on these settings, see https://www.tensorflow.org/quantum/design.
 #
 on:
-  #push:
+  push:
   workflow_run:
     types: [completed]
     workflows: ["pages-build-deployment"]
@@ -135,7 +135,7 @@ jobs:
           repository: ${{ env.TARGET_REPOSITORY }}
 
       - name: 🚀 Setup Parser
-        uses: eq19/parser@v
+        uses: eq19/parser@v2
         id: set-parser
         if: success()
         with:
