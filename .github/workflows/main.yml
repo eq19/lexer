@@ -18,7 +18,7 @@ name: COmpendium of RElations – Modulo 6
 # For more information on these settings, see https://www.tensorflow.org/quantum/design.
 #
 on:
-  push:
+  #push:
   workflow_run:
     types: [completed]
     workflows: ["pages-build-deployment"]
@@ -118,9 +118,9 @@ jobs:
 
     # 🕸️ Global Environment
     env:
-      IP_ADDRESS: '${{ needs.lexering.outputs.address }}'
-      TARGET_REPOSITORY: '${{ needs.lexering.outputs.target }}'
       PASS: ${{ contains(needs.*.result, 'failure') && false || true }}
+      TARGET_REPOSITORY: '${{ needs.lexering.outputs.target }}'
+      IP_ADDRESS: '${{ needs.lexering.outputs.address }}'
 
     # ✔️ Completeness status
     if: ${{ (always() && contains(needs.*.result, 'success')) ||

@@ -48,7 +48,7 @@ inputs:
     description: Path for the docker cache destination
     required: false
     default: /tmp/.buildx-cache-new
-  provider:
+  failure_status:
     description: 'The deploy provider'
     required: true
   owner:
