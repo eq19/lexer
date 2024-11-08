@@ -61,6 +61,9 @@ inputs:
   workspace:
     description: 'The deploy repository'
     required: false
+  failure_status:
+    description: 'The deploy branch'
+    required: false
 
 outputs:
   all_outputs:
@@ -79,11 +82,11 @@ runs:
       uses: ruby/setup-ruby@v1
       if: runner.os == '-Linux'
       with:
-        #cache-version: 1
-        #rubygems: default
+        cache-version: 1
+        rubygems: default
         bundler-cache: true
         ruby-version: '3.3.4'
-        #working-directory: "${{ github.workspace }}"
+        working-directory: "${{ github.workspace }}"
         
     - name: Build Jekyll pages
       if: runner.os == '-Linux'
