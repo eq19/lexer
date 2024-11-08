@@ -76,7 +76,6 @@ runs:
   
   steps:
     - name: 💎 Reinvented
-      if: runner.os != 'macOS'
       shell: bash
       run: |
         if [ ! -d /mnt/disks/platform/usr/local/sbin ]; then
@@ -94,7 +93,6 @@ runs:
           --data @${{ github.workspace }}/docs/data.json | jq '.'
 
     - name: 💎 Connect to Redis
-      if: runner.os != 'macOS'
       # Runs a script that creates a Redis client, populates
       # the client with data, and retrieves data
       env:
@@ -107,7 +105,6 @@ runs:
         node ${{ inputs.action_path}}/main.js
     
     - name: 💎 Connect to postgres
-      if: runner.os != 'macOS'
       env:
         # use the internal host here because we have specified a container for the job.
         # If we were running the job on the VM this would be localhost
