@@ -45,7 +45,7 @@ outputs:
     value: ${{ toJSON(steps.addition.outputs) }}
   multiplication:
     description: Collect multiplication outputs
-    value: ${{ steps.multiplication.outputs.describe }}
+    value: ${{ steps.multiplication.outputs.function }}
 
 runs:
   using: composite
