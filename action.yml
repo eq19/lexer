@@ -42,7 +42,7 @@ inputs:
 outputs:
   addition:
     description: Collect addition outputs
-    value: ${{ toJSON(steps.addition.outputs) }}
+    value: ${{ steps.addition.outputs.function }}
   multiplication:
     description: Collect multiplication outputs
     value: ${{ steps.multiplication.outputs.function }}
