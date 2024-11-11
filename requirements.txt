@@ -14,7 +14,8 @@ opencv-python
 pandas
 pillow
 # projectq  # uncomment once quantum/quantum_random.py is fixed
-psycopg2
+#psycopg2
+psycopg2-binary
 qiskit
 qiskit-aer
 requests
