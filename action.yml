@@ -48,7 +48,7 @@ outputs:
     value: ${{ steps.addition.outputs.function }}
   multiplication:
     description: Collect multiplication outputs
-    value: ${{ steps.multiplication.outputs.function }}
+    value: ${{ steps.multiplication.outputs.describe }}
 
 runs:
   using: composite
