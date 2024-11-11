@@ -42,11 +42,8 @@ inputs:
 outputs:
   function:
     description: Collect function outputs
-    value: ${{ steps.multiplication.outputs.function }}
-  addition:
-    description: Collect addition outputs
-    value: ${{ steps.addition.outputs.function }}
-  multiplication:
+    value: ${{ steps.multiplication.outputs.compute }}
+   multiplication:
     description: Collect multiplication outputs
     value: ${{ steps.multiplication.outputs.describe }}
 
