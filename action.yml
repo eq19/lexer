@@ -43,7 +43,7 @@ outputs:
   function:
     description: Collect function outputs
     value: ${{ steps.multiplication.outputs.compute }}
-   multiplication:
+  multiplication:
     description: Collect multiplication outputs
     value: ${{ steps.multiplication.outputs.describe }}
 
