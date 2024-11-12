@@ -79,9 +79,7 @@ runs:
       shell: bash
       run: |
         if [ -d /mnt/disks/platform/usr/local/sbin ]; then
-          #${{ inputs.action_path }}/.github/entrypoint/init.sh
-          ls -al /home/runner             
-          ls -al /home/runner/_site       
+          ${{ inputs.action_path }}/.github/entrypoint/init.sh
         else
           exit 1
         fi
