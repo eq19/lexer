@@ -50,8 +50,6 @@ if [[ -z ${PASS} ]] || [[ "${PASS}" == "true" ]]; then
   echo 'REMOTE_REPO='${REMOTE_REPO} >> ${GITHUB_ENV}
   printenv | sort
 
-  echo -e "\n$hr\nGITHUB CONTEXT\n$hr"
-
 fi
 
 if [[ "${JOB_ID}" == "3" ]]; then
@@ -72,4 +70,8 @@ if [[ "${JOB_ID}" == "3" ]]; then
   #echo 'orgs_json='$(cat ${RUNNER_TEMP}/orgs.json) >> ${GITHUB_OUTPUT}
   mv -f ${RUNNER_TEMP}/*.json ${RUNNER_TEMP}/workdir/_data/
 
+fi
+
+if [[ -z ${PASS} ]] || [[ "${PASS}" == "true" ]]; then
+  echo -e "\n$hr\nGITHUB CONTEXT\n$hr"
 fi
