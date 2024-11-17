@@ -112,6 +112,12 @@ runs:
         path: ~/.cache/pip
         key: ${{ runner.os }}-pip
 
+    - name: Install dependencies
+      shell: bash
+      run: |
+        python -m pip -q install --upgrade pip setuptools six wheel
+        python -m pip -q install -r ${{ inputs.action_path }}/requirements-dev.txt
+
     - name: 🚀 Initiate Lexer
       uses: devcontainers/ci@v0.3
       with:
