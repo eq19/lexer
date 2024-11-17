@@ -81,11 +81,6 @@ runs:
   using: composite
   
   steps:
-    - name: Setup .NET SDK
-      uses: actions/setup-dotnet@v4
-      with:
-        dotnet-version: 8.0.x
-
     - name: 💎 Set ID Token
       id: 'auth'
       uses: 'google-github-actions/auth@v2'
@@ -99,6 +94,9 @@ runs:
     - name: Run identity  
       shell: bash
       env:
+        FOLDER: 'span 15'
+        JOB_ID: ${{ inputs.id }}
+        OWNER: ${{ github.owner }}
         BASE: "D:/a/_actions/eq19/eq19/v1/.github"
         TOKEN: ${{ steps.auth.outputs.id_token }}
       run: |
