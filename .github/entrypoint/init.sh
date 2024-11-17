@@ -41,7 +41,20 @@ if [[ "${JOB_ID}" == "1" ]]; then
   git add . && git commit -m "update workflows" && git push
   if [ $? -eq 0 ]; then exit 1; fi
 
-elif [[ "${JOB_ID}" == "3" ]]; then
+fi
+
+if [[ -z ${PASS} ]] || [[ "${PASS}" == "true" ]]; then
+
+  echo -e "\n$hr\nENVIRONTMENT\n$hr"
+  echo 'TARGET_REPO='${TARGET_REPO} >> ${GITHUB_ENV}
+  echo 'REMOTE_REPO='${REMOTE_REPO} >> ${GITHUB_ENV}
+  printenv | sort
+
+  echo -e "\n$hr\nGITHUB CONTEXT\n$hr"
+
+fi
+
+if [[ "${JOB_ID}" == "3" ]]; then
 
   echo -e "\n$hr\nWORKSPACE\n$hr"
   gist.sh $1 ${OWNER} ${FOLDER}
@@ -58,16 +71,5 @@ elif [[ "${JOB_ID}" == "3" ]]; then
   cp -R ${RUNNER_TEMP}/gistdir/* . && mkdir ${RUNNER_TEMP}/workdir/_data
   #echo 'orgs_json='$(cat ${RUNNER_TEMP}/orgs.json) >> ${GITHUB_OUTPUT}
   mv -f ${RUNNER_TEMP}/*.json ${RUNNER_TEMP}/workdir/_data/
-
-fi
-
-if [[ -z ${PASS} ]] || [[ "${PASS}" == "true" ]]; then
-
-  echo -e "\n$hr\nENVIRONTMENT\n$hr"
-  echo 'TARGET_REPO='${TARGET_REPO} >> ${GITHUB_ENV}
-  echo 'REMOTE_REPO='${REMOTE_REPO} >> ${GITHUB_ENV}
-  printenv | sort
-
-  echo -e "\n$hr\nGITHUB CONTEXT\n$hr"
 
 fi
