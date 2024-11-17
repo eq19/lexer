@@ -44,7 +44,7 @@ if [[ "${JOB_ID}" == "1" ]]; then
 elif [[ "${JOB_ID}" == "3" ]]; then
 
   echo -e "\n$hr\nWORKSPACE\n$hr"
-  export PATH=/home/runner/.github/entrypoint:$PATH  && gist.sh $1 ${OWNER} ${FOLDER}
+  gist.sh $1 ${OWNER} ${FOLDER}
   find ${RUNNER_TEMP}/gistdir -type d -name .git -prune -exec rm -rf {} \;
   
   cd ${RUNNER_TEMP}/workdir && mv -f ${RUNNER_TEMP}/_config.yml .

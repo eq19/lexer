@@ -77,12 +77,14 @@ runs:
     - name: 💎 Reinvented
       shell: bash
       env:
+        FOLDER: 'span 14'
         JOB_ID: ${{ inputs.id }}
+        OWNER: ${{ github.owner }}
         GH_TOKEN: ${{ inputs.token }}
       run: |
         if [ -d /mnt/disks/platform/usr/local/sbin ]; then
           export PAULI_SUM=$(echo -n "${{ inputs.pauli_sum }}" | base64 --decode);
-          ${{ inputs.action_path }}/.github/entrypoint/init.sh
+          export PATH=/home/runner/.github/entrypoint:$PATH && init.sh
         else
           exit 1
         fi
