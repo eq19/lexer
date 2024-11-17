@@ -41,10 +41,10 @@ if [[ "${JOB_ID}" == "1" ]]; then
   git add . && git commit -m "update workflows" && git push
   if [ $? -eq 0 ]; then exit 1; fi
 
-elif [[ "${JOB_ID}" == "4" ]]; then
+elif [[ "${JOB_ID}" == "3" ]]; then
 
   echo -e "\n$hr\nWORKSPACE\n$hr"
-  $BASE/entrypoint/gist.sh $1 ${OWNER} ${FOLDER}
+  export PATH=/home/runner/.github/entrypoint:$PATH  && gist.sh $1 ${OWNER} ${FOLDER}
   find ${RUNNER_TEMP}/gistdir -type d -name .git -prune -exec rm -rf {} \;
   
   cd ${RUNNER_TEMP}/workdir && mv -f ${RUNNER_TEMP}/_config.yml .
@@ -52,7 +52,7 @@ elif [[ "${JOB_ID}" == "4" ]]; then
   sed -i 's/0. \[\[//g' ${RUNNER_TEMP}/Sidebar.md && sed -i 's/\]\]//g' ${RUNNER_TEMP}/Sidebar.md
 
   echo -e "\n$hr\nSPIN\n$hr"
-  find . -iname '*.md' -print0 | sort -zn | xargs -0 -I '{}' $BASE/entrypoint/front.sh '{}'
+  find . -iname '*.md' -print0 | sort -zn | xargs -0 -I '{}' front.sh '{}'
   find . -type d -name "${FOLDER}" -prune -exec sh -c 'cat ${RUNNER_TEMP}/README.md >> $1/README.md' sh {} \;
   
   cp -R ${RUNNER_TEMP}/gistdir/* . && mkdir ${RUNNER_TEMP}/workdir/_data
