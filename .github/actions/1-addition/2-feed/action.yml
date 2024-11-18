@@ -109,7 +109,7 @@ runs:
         export PATH=$GITHUB_WORKSPACE/.github/entrypoint:$PATH && artifact.sh
         mv -f ${RUNNER_TEMP}/_config.yml ${{ inputs.action_path }}/
  
-        mkdir {{ inputs.action_path }}/_data
+        mkdir -p {{ inputs.action_path }}/_data
         mv -f ${RUNNER_TEMP}/*.json {{ inputs.action_path }}/_data/
 
         mv ${{ inputs.action_path }} ${{ github.workspace }}/_site
