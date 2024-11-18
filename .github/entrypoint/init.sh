@@ -56,11 +56,11 @@ if [[ "${JOB_ID}" == "3" ]]; then
   rm -rf ${RUNNER_TEMP}/Sidebar.md && cp _Sidebar.md ${RUNNER_TEMP}/Sidebar.md
   sed -i 's/0. \[\[//g' ${RUNNER_TEMP}/Sidebar.md && sed -i 's/\]\]//g' ${RUNNER_TEMP}/Sidebar.md
 
-  echo -e "\n$hr\nSPIN\n$hr"
   find . -iname '*.md' -print0 | sort -zn | xargs -0 -I '{}' front.sh '{}'
   find . -type d -name "${FOLDER}" -prune -exec sh -c 'cat ${RUNNER_TEMP}/README.md >> $1/README.md' sh {} \;
   
   cp -R ${RUNNER_TEMP}/gistdir/* .
+  mv -f * /home/runner/_site/
 
 fi
 
