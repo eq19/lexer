@@ -39,6 +39,9 @@ mv -f ${RUNNER_TEMP}/workdir/Home.md ${RUNNER_TEMP}/workdir/README.md
 find ${RUNNER_TEMP}/gistdir -type f -name 'spin_*.txt' | sort -n -t _ -k 2  | while ((i++)); IFS= read -r f; do sort.sh $f $i; done
 
 if [[ "${WIKI}" != "${BASE}" ]]; then
+  echo -e "\n1="$1
+  echo -e "\n2="$2
+  echo -e "\nWIKI="$WIKI
   git clone $WIKI ${RUNNER_TEMP}/wikidir
   mv -f ${RUNNER_TEMP}/wikidir/Home.md ${RUNNER_TEMP}/wikidir/README.md
   echo $3
