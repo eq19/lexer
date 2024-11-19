@@ -44,7 +44,7 @@ if [[ -z ${PASS} ]] || [[ "${PASS}" == "true" ]]; then
   echo 'REMOTE_REPO='${REMOTE_REPO} >> ${GITHUB_ENV}
 
   if [[ -f _config.yml ]]; then
-    mapfile -t site < <(yq '.' _config.yml)
+    export FOLDER=$(echo $(yq '.span' _config.yml))
   elif [[ -f /home/runner/_site/.env ]]; then
     set -a && . /home/runner/_site/.env && set +a
   fi
@@ -55,7 +55,7 @@ fi
 if [[ "${JOB_ID}" == "3" ]]; then
 
   echo -e "\n$hr\nWORKSPACE\n$hr"
-  gist.sh $(echo yq '.repository' _config.yml) $(echo yq '.span' _config.yml)
+  gist.sh ${TARGET_REPOSITORY} ${FOLDER}
   find ${RUNNER_TEMP}/gistdir -type d -name .git -prune -exec rm -rf {} \;
   
   mv -f ${RUNNER_TEMP}/workdir/* /home/runner/_site/
@@ -64,7 +64,7 @@ if [[ "${JOB_ID}" == "3" ]]; then
 
   cd /home/runner/_site && cp -R ${RUNNER_TEMP}/gistdir/* .
   find . -iname '*.md' -print0 | sort -zn | xargs -0 -I '{}' front.sh '{}'
-  find . -type d -name $(yq '.span' _config.yml) -prune -exec sh -c 'cat ${RUNNER_TEMP}/README.md >> $1/README.md' sh {} \;
+  find . -type d -name "${FOLDER}" -prune -exec sh -c 'cat ${RUNNER_TEMP}/README.md >> $1/README.md' sh {} \;
 
 fi
 
