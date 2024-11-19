@@ -52,15 +52,15 @@ if [[ "${JOB_ID}" == "3" ]]; then
   gist.sh ${TARGET_REPOSITORY} ${FOLDER}
   find ${RUNNER_TEMP}/gistdir -type d -name .git -prune -exec rm -rf {} \;
   
-  cd ${RUNNER_TEMP}/workdir
+  mv -f ${RUNNER_TEMP}/workdir/* /home/runner/_site/
   rm -rf ${RUNNER_TEMP}/Sidebar.md && cp _Sidebar.md ${RUNNER_TEMP}/Sidebar.md
   sed -i 's/0. \[\[//g' ${RUNNER_TEMP}/Sidebar.md && sed -i 's/\]\]//g' ${RUNNER_TEMP}/Sidebar.md
 
+  cd /home/runner/_site
   find . -iname '*.md' -print0 | sort -zn | xargs -0 -I '{}' front.sh '{}'
   find . -type d -name "${FOLDER}" -prune -exec sh -c 'cat ${RUNNER_TEMP}/README.md >> $1/README.md' sh {} \;
   
   cp -R ${RUNNER_TEMP}/gistdir/* .
-  mv -f * /home/runner/_site/
 
 fi
 
