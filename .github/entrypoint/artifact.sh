@@ -97,11 +97,14 @@ jekyll_build() {
   sed -i "1s|^|repository: ${OWNER}/$1\n|" ${RUNNER_TEMP}/_config.yml
   [[ $1 != *"github.io"* ]] && sed -i "1s|^|baseurl: /$1\n|" ${RUNNER_TEMP}/_config.yml
   
+  FOLDER="span$(( 17 - $3 ))"
+  echo 'FOLDER='${FOLDER} >> ${RUNNER_TEMP}/.env
+  
   sed -i "1s|^|title: eQuantum\n|" ${RUNNER_TEMP}/_config.yml
-  FOLDER="span$(( 17 - $3 ))" && sed -i "1s|^|span: ${FOLDER}\n|" ${RUNNER_TEMP}/_config.yml
+  sed -i "1s|^|span: ${FOLDER}\n|" ${RUNNER_TEMP}/_config.yml
   sed -i "1s|^|user: ${USER}\n|" ${RUNNER_TEMP}/_config.yml
-
   sed -i "1s|^|id: ${SITEID}\n|" ${RUNNER_TEMP}/_config.yml
+
   echo 'ID='${SITEID} >> ${GITHUB_ENV}
   cat ${RUNNER_TEMP}/_config.yml
    

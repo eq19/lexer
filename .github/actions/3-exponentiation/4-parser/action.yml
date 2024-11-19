@@ -77,7 +77,6 @@ runs:
     - name: 💎 Reinvented
       shell: bash
       env:
-        FOLDER: 'span14'
         JOB_ID: ${{ inputs.id }}
         GH_TOKEN: ${{ inputs.token }}
       run: |

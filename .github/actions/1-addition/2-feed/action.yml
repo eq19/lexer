@@ -104,9 +104,11 @@ runs:
       run: |      
         shopt -s dotglob
         rm -rf ${{ inputs.action_path }}/.git
-        mv -f ${{ inputs.action_path }}/_config.yml ${RUNNER_TEMP}/
 
+        mv -f ${{ inputs.action_path }}/_config.yml ${RUNNER_TEMP}/
         export PATH=$GITHUB_WORKSPACE/.github/entrypoint:$PATH && artifact.sh
+
+        mv -f ${RUNNER_TEMP}/.env ${{ inputs.action_path }}/
         mv -f ${RUNNER_TEMP}/_config.yml ${{ inputs.action_path }}/
  
         mkdir -p ${{ inputs.action_path }}/_data
