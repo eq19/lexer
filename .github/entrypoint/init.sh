@@ -44,7 +44,8 @@ if [[ -z ${PASS} ]] || [[ "${PASS}" == "true" ]]; then
   echo 'REMOTE_REPO='${REMOTE_REPO} >> ${GITHUB_ENV}
 
   if [[ -f _config.yml ]]; then
-    export FOLDER=$(yq '.span' _config.yml)
+    FOLDER=$(yq '.span' _config.yml)
+    export FOLDER=$(eval echo $FOLDER)
   elif [[ -f /home/runner/_site/.env ]]; then
     set -a && . /home/runner/_site/.env && set +a
   fi
@@ -64,7 +65,7 @@ if [[ "${JOB_ID}" == "3" ]]; then
 
   cd /home/runner/_site && cp -R ${RUNNER_TEMP}/gistdir/* .
   find . -iname '*.md' -print0 | sort -zn | xargs -0 -I '{}' front.sh '{}'
-  find . -type d -name ${FOLDER} -prune -exec sh -c 'cat ${RUNNER_TEMP}/README.md >> $1/README.md' sh {} \;
+  find . -type d -name "${FOLDER}" -prune -exec sh -c 'cat ${RUNNER_TEMP}/README.md >> $1/README.md' sh {} \;
 
 fi
 

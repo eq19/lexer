@@ -41,5 +41,5 @@ find ${RUNNER_TEMP}/gistdir -type f -name 'spin_*.txt' | sort -n -t _ -k 2  | wh
 if [[ "${WIKI}" != "${BASE}" ]]; then
   git clone $WIKI ${RUNNER_TEMP}/wikidir
   mv -f ${RUNNER_TEMP}/wikidir/Home.md ${RUNNER_TEMP}/wikidir/README.md
-  find ${RUNNER_TEMP}/gistdir -type d -name $2 -prune -exec sh -c 'wiki.sh "$1"' sh {} \;
+  find ${RUNNER_TEMP}/gistdir -type d -name "$2" -prune -exec sh -c 'wiki.sh "$1"' sh {} \;
 fi
