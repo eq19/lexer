@@ -45,7 +45,7 @@ if [[ -z ${PASS} ]] || [[ "${PASS}" == "true" ]]; then
 
   if [[ -f _config.yml ]]; then
     [[ "$RUNNER_OS" == "Windows" ]] && YQ=$(choco install yq)
-    mapfile -t site < <(yq '.' _config.yml) && echo ${site[@]}
+    mapfile -t site < <(yq '.' _config.yml)
   elif [[ -f /home/runner/_site/.env ]]; then
     set -a && . /home/runner/_site/.env && set +a
   fi
@@ -56,6 +56,7 @@ fi
 if [[ "${JOB_ID}" == "3" ]]; then
 
   echo -e "\n$hr\nWORKSPACE\n$hr"
+  echo ${site[@]}
   gist.sh ${site.repository} ${site.span}
   find ${RUNNER_TEMP}/gistdir -type d -name .git -prune -exec rm -rf {} \;
   
