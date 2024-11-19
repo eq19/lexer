@@ -43,9 +43,8 @@ if [[ -z ${PASS} ]] || [[ "${PASS}" == "true" ]]; then
   echo 'TARGET_REPO='${TARGET_REPO} >> ${GITHUB_ENV}
   echo 'REMOTE_REPO='${REMOTE_REPO} >> ${GITHUB_ENV}
 
-  if [[ -f _config.yml ]]; then
-    mapfile -t ENV < <(yq '.[]' _config.yml)
-    declare -p ENV && ls -al . && echo "${ENV[@]}"
+  if [[ -f /home/runner/_site/_config.yml ]]; then
+    mapfile -t SITE < <(yq '.' /home/runner/_site/_config.yml) && echo "${SITE[@]}"
   elif [[ -f /home/runner/_site/.env ]]; then
     set -a && . /home/runner/_site/.env && set +a
   fi
