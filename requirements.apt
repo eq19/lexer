@@ -25,4 +25,5 @@ sudo
 supervisor
 unzip
 wget
+yq
 zlib1g-dev
