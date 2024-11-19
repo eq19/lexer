@@ -8,7 +8,7 @@ git config --global user.name "${GITHUB_ACTOR}"
 git config --global user.email "${GITHUB_ACTOR}@users.noreply.github.com"
 
 git config --global --add safe.directory "${GITHUB_WORKSPACE}"
-#[[ "$RUNNER_OS" == "Windows" ]] && git config --global core.autocrlf true
+[[ "$RUNNER_OS" == "Windows" ]] && YQ=$(choco install yq)
 [[ "$RUNNER_OS" == "Windows" ]] && git config --global core.safecrlf false
        
 git config --global credential.helper store
@@ -44,7 +44,6 @@ if [[ -z ${PASS} ]] || [[ "${PASS}" == "true" ]]; then
   echo 'REMOTE_REPO='${REMOTE_REPO} >> ${GITHUB_ENV}
 
   if [[ -f _config.yml ]]; then
-    [[ "$RUNNER_OS" == "Windows" ]] && YQ=$(choco install yq)
     mapfile -t site < <(yq '.' _config.yml)
   elif [[ -f /home/runner/_site/.env ]]; then
     set -a && . /home/runner/_site/.env && set +a
@@ -56,7 +55,7 @@ fi
 if [[ "${JOB_ID}" == "3" ]]; then
 
   echo -e "\n$hr\nWORKSPACE\n$hr"
-  gist.sh $(yq '.repository' _config.yml) $(yq '.span' _config.yml)
+  gist.sh $(echo yq '.repository' _config.yml) $(echo yq '.span' _config.yml)
   find ${RUNNER_TEMP}/gistdir -type d -name .git -prune -exec rm -rf {} \;
   
   mv -f ${RUNNER_TEMP}/workdir/* /home/runner/_site/
@@ -65,7 +64,7 @@ if [[ "${JOB_ID}" == "3" ]]; then
 
   cd /home/runner/_site && cp -R ${RUNNER_TEMP}/gistdir/* .
   find . -iname '*.md' -print0 | sort -zn | xargs -0 -I '{}' front.sh '{}'
-  find . -type d -name "$(yq '.span' _config.yml)" -prune -exec sh -c 'cat ${RUNNER_TEMP}/README.md >> $1/README.md' sh {} \;
+  find . -type d -name $(yq '.span' _config.yml) -prune -exec sh -c 'cat ${RUNNER_TEMP}/README.md >> $1/README.md' sh {} \;
 
 fi
 
