@@ -43,7 +43,10 @@ if [[ -z ${PASS} ]] || [[ "${PASS}" == "true" ]]; then
   echo 'TARGET_REPO='${TARGET_REPO} >> ${GITHUB_ENV}
   echo 'REMOTE_REPO='${REMOTE_REPO} >> ${GITHUB_ENV}
 
-  if [[ -d /home/runner/_site ]]; then
+  if [[ -f _config.yml ]]; then
+    mapfile -t ENV < <(yq '.[]' _config.yml)
+    declare -p ENV && ls -al . && echo "${ENV[@]}"
+  elif [[ -f /home/runner/_site/.env ]]; then
     set -a && . /home/runner/_site/.env && set +a
   fi
   printenv | sort
