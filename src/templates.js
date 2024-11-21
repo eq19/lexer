@@ -7,7 +7,7 @@
 'use strict';
 
 var fs = require('fs');
-var log = require('./logger').getLogger();
+var log = require('winston');
 var path = require('path');
 var handlebars = require('handlebars');
 // var tidyMarkdown = require('tidy-markdown');
@@ -55,7 +55,6 @@ module.exports = {
         break;
       case 'class':
       case 'struct':
-      case 'interface':
         template = 'class';
         break;
       default:
@@ -63,11 +62,7 @@ module.exports = {
         console.log('Skipping ', compound);
         return undefined;
     }
-
-    if (typeof this.templates[template] == "undefined") {
-      throw 'Template "' + template + '" not found in your templates directory.';
-    }
-
+    
     return this.templates[template](compound).replace(/(\r\n|\r|\n){3,}/g, '$1\n');
   },
 
@@ -92,7 +87,15 @@ module.exports = {
 
     // Generate an anchor for internal links
     handlebars.registerHelper('anchor', function(name) {
-      return helpers.getAnchor(name, options);
+      if (options.anchors) {
+        return '{#' + name + '}';
+      }
+      else if (options.htmlAnchors) {
+        return '<a id="' + name + '"></a>';
+      }
+      else {
+        return '';
+      }
     });
-  },
+  }
 };
