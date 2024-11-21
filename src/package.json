@@ -2,7 +2,7 @@
   "name": "moxygen",
   "version": "0.8.0",
   "description": "Doxygen XML to Markdown documentation converter",
-  "main": "index.js",
+  "main": "../index.js",
   "scripts": {
     "release": "release-it",
     "test": "npm run clean && cd example/ && doxygen && cd .. && node bin/moxygen.js --groups --pages --anchors --output=example/doc/api-%s.md example/xml",
