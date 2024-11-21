@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 'use strict';
 
+//var program = require('commander');
 var logger = require('../src/logger');
 var assign = require('object-assign');
 var pjson = require('../src/package.json');
