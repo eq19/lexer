@@ -1,11 +1,11 @@
 #!/usr/bin/env node
 'use strict';
 
+var app = require('../index.js');
 var program = require('commander');
 var logger = require('../src/logger');
 var assign = require('object-assign');
 var pjson = require('../src/package.json');
-var app = require('../index.js');
 
 //import { Program } from 'commander'; 
 //const program = new Program();
