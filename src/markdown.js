@@ -8,10 +8,6 @@
 
 module.exports = {
 
-  refLink: function (text, refid) {
-    return this.link(text, '{#ref ' + refid + ' #}');
-  },
-
   link: function (text, href) {
     return '[' + text + '](' + href + ')';
   },
