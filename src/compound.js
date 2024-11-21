@@ -6,11 +6,10 @@
  **/
 'use strict';
 
-var log = require('./logger').getLogger();
+var log = require('winston');
 
-function Compound(parent, id, name) {
+function Compound(parent, name) {
   this.parent = parent;
-  this.id = id;
   this.name = name;
   this.compounds = {};
   this.members = [];
@@ -20,11 +19,11 @@ function Compound(parent, id, name) {
 
 Compound.prototype = {
 
-  find: function (id, name, create) {
-    var compound = this.compounds[id];
+  find: function (name, create) {
+    var compound = this.compounds[name];
 
     if (!compound && create) {
-      compound = this.compounds[id] = new Compound(this, id, name);
+      compound = this.compounds[name] = new Compound(this, name);
     }
 
     return compound;
@@ -84,16 +83,14 @@ Compound.prototype = {
         if (item.kind == 'namespace') {
           if ((!item.filtered.compounds || !item.filtered.compounds.length) &&
             (!item.filtered.members || !item.filtered.members.length)) {
-            // log.verbose('Skip empty namespace: ' + item.name);
+            // log.verbose('Skip empty namespace', item.name);
             return;
           }
         }
 
         // skip items not belonging to current group
         else if (groupid && item.groupid != groupid) {
-          // log.verbose('Skip item from foreign group: { item.kind: ' + item.kind
-          //   + ', item.name: ' + item.name + ', item.groupid: '
-          //   + item.groupid + ', group.id: '+ group.id + '}');
+          // log.verbose('Skip item from foreign group', item.kind, item.name, item.groupid, group.id);
           return;
         }
 
@@ -106,7 +103,7 @@ Compound.prototype = {
     });
 
     return result;
-  },
+  }
 }
 
 module.exports = Compound;
