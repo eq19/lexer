@@ -2,13 +2,10 @@
 'use strict';
 
 var logger = require('../src/logger');
-//var program = require('commander');
+var program = require('commander');
 var assign = require('object-assign');
 var pjson = require('../package.json');
 var app = require('../index.js');
-
-import { program } from 'commander'; 
-//const program = new Program();
 
 program.version(pjson.version)
   .usage('[options] <doxygen XML directory>')
