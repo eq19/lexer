@@ -3,7 +3,7 @@
 
 var logger = require('../src/logger');
 var assign = require('object-assign');
-var pjson = require('../package.json');
+var pjson = require('../src/package.json');
 var app = require('../index.js');
 
 import { Program } from 'commander'; 
