@@ -48,10 +48,10 @@ RUN cd /tmp && wget http://archive.ubuntu.com/ubuntu/pool/main/o/openssl/libssl1
 
 # Install dependencies
 #RUN gem install faraday-retry github-pages --platform=ruby
-RUN npm install --package-lock-only redis talib pg mathjs gauss && \
-    npm ci && cd /home/runner/templates/doxygen && doxygen && cd .. && \
-    node bin/moxygen.js --groups --pages --anchors --output=example/doc/api-%s.md example/xml
 #RUN cmake -S . -B build -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=./.install
+RUN npm install --package-lock-only redis talib pg mathjs gauss && \
+    npm ci && cd /home/runner/templates/doxygen && doxygen && cd /home/runner && \
+    node bin/moxygen.js --groups --pages --anchors --output=templates/doxygen/doc/api-%s.md templates/doxygen/xml
 
 RUN GH_RUNNER_VERSION=${GH_RUNNER_VERSION:-$(curl --silent "https://api.github.com/repos/actions/runner/releases/latest" | grep tag_name | sed -E 's/.*"v([^"]+)".*/\1/')} && \
     curl -L -O https://github.com/actions/runner/releases/download/v$GH_RUNNER_VERSION/actions-runner-linux-x64-$GH_RUNNER_VERSION.tar.gz && \
