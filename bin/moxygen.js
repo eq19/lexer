@@ -1,12 +1,13 @@
 #!/usr/bin/env node
 'use strict';
 
-import { program } from 'commander';
-
 var logger = require('../src/logger');
 var assign = require('object-assign');
 var pjson = require('../package.json');
 var app = require('../index.js');
+
+import { program } from 'commander'; 
+const program = new program();
 
 program.version(pjson.version)
   .usage('[options] <doxygen XML directory>')
