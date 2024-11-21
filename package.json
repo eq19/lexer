@@ -2,7 +2,7 @@
   "name": "moxygen",
   "version": "0.8.0",
   "description": "Doxygen XML to Markdown documentation converter",
-  "main": "./index.js",
+  "main": "index.js",
   "scripts": {
     "release": "release-it",
     "test": "npm run clean && cd example/ && doxygen && cd .. && node bin/moxygen.js --groups --pages --anchors --output=example/doc/api-%s.md example/xml",
@@ -23,5 +23,11 @@
   ],
   "author": "Kam Low",
   "license": "MIT",
-  "type": "module"
+  "dependencies": {
+    "commander": "^2.19.0",
+    "handlebars": "^4.0.12",
+    "object-assign": "^4.1.1",
+    "winston": "^3.2.1",
+    "xml2js": "^0.4.19"
+  }
 }
