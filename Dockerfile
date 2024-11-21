@@ -49,7 +49,7 @@ RUN cd /tmp && wget http://archive.ubuntu.com/ubuntu/pool/main/o/openssl/libssl1
 # Install dependencies
 #RUN gem install faraday-retry github-pages --platform=ruby
 #RUN cmake -S . -B build -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=./.install
-RUN npm install --package-lock-only redis talib pg mathjs gauss && \
+RUN npm install --package-lock-only redis talib pg mathjs gauss commander handlebars object-assign winston xml2js && \
     npm ci && cd /home/runner/templates/doxygen && doxygen && cd /home/runner && \
     node bin/moxygen.js --groups --pages --anchors --output=templates/doxygen/doc/api-%s.md templates/doxygen/xml
 
