@@ -38,8 +38,8 @@ LABEL maintainer="me@eq19.com" \
     org.label-schema.vendor="Thomas Cardonne" \
     org.label-schema.docker.cmd="docker run -it tcardonne/github-runner:latest"
 
-RUN DEBIAN_FRONTEND=noninteractive apt-get update && \
-    sed "s/#.*//" /home/runner/requirements.apt | xargs apt-get install -y && \
+RUN DEBIAN_FRONTEND=noninteractive apt-get update -qq -o=Dpkg::Use-Pty=0 && \
+    sed "s/#.*//" /home/runner/requirements.apt | xargs apt-get install -qq -o=Dpkg::Use-Pty=0 -y && \
     apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # Find the most recent 1.1 libssl package in the ubuntu archives
