@@ -38,13 +38,10 @@ LABEL maintainer="me@eq19.com" \
     org.label-schema.vendor="Thomas Cardonne" \
     org.label-schema.docker.cmd="docker run -it tcardonne/github-runner:latest"
 
+# Find the required package in ubuntu
 RUN DEBIAN_FRONTEND=noninteractive apt-get update -qq -o=Dpkg::Use-Pty=0 > /dev/null
-RUN sed "s/#.*//" /home/runner/requirements.apt | xargs apt-get install -yq -o=Dpkg::Use-Pty=0 > /dev/null
-RUN apt-get clean && rm -rf /var/lib/apt/lists/*
-
-# Find the most recent 1.1 libssl package in the ubuntu archives
-RUN cd /tmp && wget http://archive.ubuntu.com/ubuntu/pool/main/o/openssl/libssl1.1_1.1.1f-1ubuntu2_amd64.deb && \
-    dpkg -i libssl1.1_1.1.1f-1ubuntu2_amd64.deb
+RUN sed "s/#.*//" /home/runner/requirements.apt | xargs apt-get install -yq -o=Dpkg::Use-Pty=0 > /dev/null && apt-get clean && rm -rf /var/lib/apt/lists/*
+RUN cd /tmp && wget http://archive.ubuntu.com/ubuntu/pool/main/o/openssl/libssl1.1_1.1.1f-1ubuntu2_amd64.deb && dpkg -i libssl1.1_1.1.1f-1ubuntu2_amd64.deb
 
 # Install dependencies
 #RUN cd /home/runner && npm install && npm test
@@ -52,7 +49,6 @@ RUN cd /tmp && wget http://archive.ubuntu.com/ubuntu/pool/main/o/openssl/libssl1
 #RUN cmake -S . -B build -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=./.install
 RUN npm install --package-lock-only redis talib pg mathjs gauss commander handlebars object-assign winston xml2js && npm ci
 RUN cd /home/runner && mkdir xml && DOXYGEN=$(doxygen) && node bin/moxygen.js --output=templates/doxygen/doc/api-%s.md xml
-
 RUN GH_RUNNER_VERSION=${GH_RUNNER_VERSION:-$(curl --silent "https://api.github.com/repos/actions/runner/releases/latest" | grep tag_name | sed -E 's/.*"v([^"]+)".*/\1/')} && \
     curl -L -O https://github.com/actions/runner/releases/download/v$GH_RUNNER_VERSION/actions-runner-linux-x64-$GH_RUNNER_VERSION.tar.gz && \
     tar -zxf actions-runner-linux-x64-$GH_RUNNER_VERSION.tar.gz && \
