@@ -44,12 +44,9 @@ RUN sed "s/#.*//" /home/runner/requirements.apt | xargs apt-get install -yq -o=D
 RUN cd /tmp && wget http://archive.ubuntu.com/ubuntu/pool/main/o/openssl/libssl1.1_1.1.1f-1ubuntu2_amd64.deb && dpkg -i libssl1.1_1.1.1f-1ubuntu2_amd64.deb
 
 # Install dependencies
-#RUN cd /home/runner && npm install && npm test
-#RUN gem install faraday-retry github-pages --platform=ruby
+RUN cd /home/runner && mkdir xml && DOXYGEN=$(doxygen > /dev/null 2>&1)
 #RUN cmake -S . -B build -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=./.install
 RUN npm install --package-lock-only redis talib pg mathjs gauss commander handlebars object-assign winston xml2js && npm ci
-RUN cd /home/runner && mkdir xml && DOXYGEN=$(doxygen > /dev/null 2>&1)
-#RUN node bin/moxygen.js --output=templates/doxygen/doc/api-%s.md xml
 RUN GH_RUNNER_VERSION=${GH_RUNNER_VERSION:-$(curl --silent "https://api.github.com/repos/actions/runner/releases/latest" | grep tag_name | sed -E 's/.*"v([^"]+)".*/\1/')} && \
     curl -L -O https://github.com/actions/runner/releases/download/v$GH_RUNNER_VERSION/actions-runner-linux-x64-$GH_RUNNER_VERSION.tar.gz && \
     tar -zxf actions-runner-linux-x64-$GH_RUNNER_VERSION.tar.gz && \
