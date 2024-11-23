@@ -9,9 +9,9 @@
 var path = require('path');
 var util = require('util');
 
-var doxyparser = require('./src/parser');
-var templates = require('./src/templates');
-var helpers = require('./src/helpers');
+var doxyparser = require('./scripts/parser');
+var templates = require('./scripts/templates');
+var helpers = require('./scripts/helpers');
 
 module.exports = {
 
