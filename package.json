@@ -6,7 +6,7 @@
   "scripts": {
     "release": "release-it",
     "test": "npm run clean && cd example/ && doxygen && cd .. && node bin/moxygen.js --groups --pages --anchors --output=example/doc/api-%s.md example/xml",
-    "clean": "rm -rf example/doc/*.md example/xml/"
+    "clean": "rm -rf templates/doxygen/doc/*.md templates/doxygen/xml/"
   },
   "bin": {
     "moxygen": "./bin/moxygen.js"
