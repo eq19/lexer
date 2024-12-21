@@ -6,13 +6,13 @@ hr='----------------------------------------------------------------------------
 echo -e "\n$hr\nFinal Space\n$hr"
 df -h
 
-if [ -d /mnt/disks/platform/usr/local/sbin ]; then
+if [ -d /mnt/disks/deeplearning/usr/local/sbin ]; then
 
   echo -e "\n$hr\nDocker images\n$hr"
-  /mnt/disks/platform/usr/bin/docker image ls
+  /mnt/disks/deeplearning/usr/bin/docker image ls
 
   echo -e "\n$hr\nFinal Network\n$hr"
-  /mnt/disks/platform/usr/bin/docker network inspect bridge
+  /mnt/disks/deeplearning/usr/bin/docker network inspect bridge
 
 fi
 
