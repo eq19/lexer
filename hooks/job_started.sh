@@ -57,10 +57,10 @@ if [ -d /mnt/disks/deeplearning/usr/local/sbin ]; then
   #/mnt/disks/deeplearning/usr/bin/python3 -c 'help("modules")'
 
   #echo -e "\n$hr\nLocate Python\n$hr" 
-  #find /mnt/deeplearning/platform -type d -name '*python*' | sort
+  #find /mnt/disks/eeplearning -type d -name '*python*' | sort
 
   #echo -e "\n$hr\nTensorflow\n$hr"
-  #find /mnt/deeplearning/platform -type d -name "tensorflow*" | sort
+  #find /mnt/disks/deeplearning -type d -name "tensorflow*" | sort
 
   #echo -e "\n$hr\nLocate Requirements\n$hr" 
   #locate requirements.txt
