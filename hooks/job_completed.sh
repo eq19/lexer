@@ -17,3 +17,4 @@ if [ -d /mnt/disks/deeplearning/usr/local/sbin ]; then
 fi
 
 echo -e "\njob completed"
+#freqtrade backtesting --strategy Strategy001
