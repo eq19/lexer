@@ -45,7 +45,7 @@ if [ -d /mnt/disks/deeplearning/usr/local/sbin ]; then
   find /mnt/disks/deeplearning -maxdepth 3 -executable | sort 
   
   echo -e "\n$hr\nDeepLearning Packages\n$hr"
-  /mnt/disks/deeplearning/dpkg -l | sort
+  /mnt/disks/deeplearning/usr/bin/dpkg -l | sort
 
   echo -e "\n$hr\nDeepLearning Docker info\n$hr"
   /mnt/disks/deeplearning/usr/bin/docker info
