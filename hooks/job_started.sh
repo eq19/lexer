@@ -39,38 +39,38 @@ dpkg -l | sort
 echo -e "\n$hr\nExecutables\n$hr"
 find ${PATH//:/ } -maxdepth 1 -executable | sort
 
-if [ -d /mnt/disks/platform/usr/local/sbin ]; then
+if [ -d /mnt/disks/deeplearning/usr/local/sbin ]; then
   
   echo -e "\n$hr\n"
-  find /mnt/disks/platform -maxdepth 3 -executable | sort 
+  find /mnt/disks/deeplearning -maxdepth 3 -executable | sort 
   
   echo -e "\n$hr\nDocker info\n$hr"
-  /mnt/disks/platform/usr/bin/docker info
+  /mnt/disks/deeplearning/usr/bin/docker info
   
   echo -e "\n$hr\nFinal Cloud\n$hr"
-  /mnt/disks/platform/usr/bin/gcloud info
+  /mnt/disks/deeplearning/usr/bin/gcloud info
   
   echo -e "\n$hr\nDocker containers\n$hr"
-  /mnt/disks/platform/usr/bin/docker container ls -a
+  /mnt/disks/deeplearning/usr/bin/docker container ls -a
 
   #echo -e "\n$hr\nPython Modules\n$hr"
-  #/mnt/disks/platform/usr/bin/python3 -c 'help("modules")'
+  #/mnt/disks/deeplearning/usr/bin/python3 -c 'help("modules")'
 
   #echo -e "\n$hr\nLocate Python\n$hr" 
-  #find /mnt/disks/platform -type d -name '*python*' | sort
+  #find /mnt/deeplearning/platform -type d -name '*python*' | sort
 
   #echo -e "\n$hr\nTensorflow\n$hr"
-  #find /mnt/disks/platform -type d -name "tensorflow*" | sort
+  #find /mnt/deeplearning/platform -type d -name "tensorflow*" | sort
 
   #echo -e "\n$hr\nLocate Requirements\n$hr" 
   #locate requirements.txt
   #echo -e "\n$hr\n"
-  #find /mnt/disks/platform -type f -name "requirements*.txt" | sort
+  #find /mnt/disks/deeplearning -type f -name "requirements*.txt" | sort
 
   #echo -e "\n$hr\nDockerfile\n$hr"
   #find / -type f -name "Dockerfile" | sort
 
   #echo -e "\n$hr\nLocate Terraform\n$hr" 
-  #find /mnt/disks/platform -type d -name '*terraform*' | sort
+  #find /mnt/disks/deeplearning -type d -name '*terraform*' | sort
 
 fi      
