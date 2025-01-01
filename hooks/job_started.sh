@@ -22,20 +22,16 @@ echo -e "\n$hr\nDisk Structure\n$hr"
 df -h
 
 echo -e "\n$hr\nSystemd Files\n$hr"
-ls -al /etc/systemd
+ls -al /host/etc/systemd
 
 echo -e "\n$hr\nRunner 🏠 dir\n$hr"
 ls -al /home/runner
 
 echo -e "\n$hr\nCloud-config Logs\n$hr"
-journalctl -u cloud-init
+grep -i error /host/var/log/cloud-init.log
+cat /host/var/log/cloud-init.log
 echo -e "\n$hr\n"
-grep -i error /var/log/cloud-init.log
-cat /var/log/cloud-init.log
-echo -e "\n$hr\n"
-cat /var/log/cloud-init-output.log
-echo -e "\n$hr\n"
-cloud-init analyze show
+cat /host/var/log/cloud-init-output.log
 echo -e "\n$hr\n"
 curl -s http://169.254.169.254/latest/user-data -o cloud-config.yml
 cloud-init devel schema --config-file cloud-config.yml
