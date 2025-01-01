@@ -29,6 +29,7 @@ ls -al /home/runner
 
 echo -e "\n$hr\nCloud-config Logs\n$hr"
 grep -i error /host/var/log/cloud-init.log
+echo -e "\n$hr\n"
 cat /host/var/log/cloud-init.log
 echo -e "\n$hr\n"
 cat /host/var/log/cloud-init-output.log
