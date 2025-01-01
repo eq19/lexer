@@ -26,9 +26,9 @@ ls -al /etc/systemd
 
 echo -e "\n$hr\nRunner 🏠 dir\n$hr"
 ls -al /home/runner
-#cloud-init devel schema --config-file your-cloud-config.yml
 
 echo -e "\n$hr\nCloud-config Logs\n$hr"
+journalctl -u cloud-init
 echo -e "\n$hr\n"
 grep -i error /var/log/cloud-init.log
 cat /var/log/cloud-init.log
