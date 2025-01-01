@@ -34,6 +34,7 @@ cat /var/log/cloud-init-output.log
 echo -e "\n$hr\n"
 cloud-init analyze show
 echo -e "\n$hr\n"
+#cloud-init devel schema --config-file your-cloud-config.yml
 
 echo -e "\n$hr\nSupervisor\n$hr"
 apt-cache show supervisor
