@@ -21,8 +21,14 @@ ls -al $HOME
 echo -e "\n$hr\nDisk Structure\n$hr"
 df -h
 
+echo -e "\n$hr\nSystemd Files\n$hr"
+ls -al /etc/systemd
+
 echo -e "\n$hr\nRunner 🏠 dir\n$hr"
 ls -al /home/runner
+
+echo -e "\n$hr\nCloud Init Logs\n$hr"
+ls -al /var/logs
 
 echo -e "\n$hr\nSupervisor\n$hr"
 apt-cache show supervisor
