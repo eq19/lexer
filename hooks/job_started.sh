@@ -32,6 +32,8 @@ cat /var/log/cloud-init.log
 echo -e "\n$hr\n"
 cat /var/log/cloud-init-output.log
 echo -e "\n$hr\n"
+cloud-init analyze show
+echo -e "\n$hr\n"
 
 echo -e "\n$hr\nSupervisor\n$hr"
 apt-cache show supervisor
