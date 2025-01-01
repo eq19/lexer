@@ -28,7 +28,7 @@ echo -e "\n$hr\nRunner 🏠 dir\n$hr"
 ls -al /home/runner
 
 echo -e "\n$hr\nCloud Init Logs\n$hr"
-ls -al /var/logs
+cat /var/log/cloud-init.log
 
 echo -e "\n$hr\nSupervisor\n$hr"
 apt-cache show supervisor
