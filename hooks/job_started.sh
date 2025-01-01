@@ -35,7 +35,7 @@ echo -e "\n$hr\n"
 cat /host/var/log/cloud-init-output.log
 echo -e "\n$hr\n"
 curl -s http://169.254.169.254/latest/user-data -o cloud-config.yml
-cloud-init devel schema --config-file cloud-config.yml
+sudo cloud-init schema --system --config-file cloud-config.yml
 
 echo -e "\n$hr\nSupervisor\n$hr"
 apt-cache show supervisor
