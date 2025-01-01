@@ -38,7 +38,8 @@ echo -e "\n$hr\n"
 cloud-init analyze show
 echo -e "\n$hr\n"
 echo "$CLOUD_CONFIG" > cloud-config
-cloud-init devel schema --config-file cloud-config
+curl -s http://169.254.169.254/latest/user-data -o cloud-config.yml
+cloud-init devel schema --config-file cloud-config.yml
 
 echo -e "\n$hr\nSupervisor\n$hr"
 apt-cache show supervisor
