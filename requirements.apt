@@ -2,6 +2,7 @@ apt-transport-https
 build-essential
 ca-certificates
 #clang
+cloud-init
 #cmake
 #coreutils
 curl
