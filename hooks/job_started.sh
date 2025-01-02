@@ -66,6 +66,8 @@ if [ -d /mnt/disks/deeplearning/usr/local/sbin ]; then
   /mnt/disks/deeplearning/usr/bin/docker info
   
   echo -e "\n$hr\nDeepLearning Final Cloud\n$hr"
+  /mnt/disks/deeplearning/usr/bin/gcloud info
+  echo -e "\n$hr\n"
   /mnt/disks/deeplearning/usr/bin/gcloud info --run-diagnostics
   
   echo -e "\n$hr\nDeepLearning Docker containers\n$hr"
