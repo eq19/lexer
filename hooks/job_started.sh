@@ -28,16 +28,16 @@ echo -e "\n$hr\nRunner 🏠 dir\n$hr"
 ls -al /home/runner
 
 echo -e "\n$hr\nCloud-config Logs\n$hr"
+curl -s "http://metadata.google.internal/computeMetadata/v1/instance/attributes/user-data" \
+  -H "Metadata-Flavor: Google" -o cloud-config.yml
+#Expected one of --config-file, --system or --docs arguments
+sudo cloud-init schema --config-file cloud-config.yml
+echo -e "\n$hr\n"
 grep -i error /host/var/log/cloud-init.log
 echo -e "\n$hr\n"
 cat /host/var/log/cloud-init.log
 echo -e "\n$hr\n"
 cat /host/var/log/cloud-init-output.log
-echo -e "\n$hr\n"
-curl -s "http://metadata.google.internal/computeMetadata/v1/instance/attributes/user-data" \
-  -H "Metadata-Flavor: Google" -o cloud-config.yml
-#Expected one of --config-file, --system or --docs arguments
-sudo cloud-init schema --config-file cloud-config.yml
 
 echo -e "\n$hr\nSupervisor\n$hr"
 apt-cache show supervisor
