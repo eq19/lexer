@@ -22,7 +22,7 @@ echo -e "\n$hr\nDisk Structure\n$hr"
 df -h
 
 echo -e "\n$hr\nSystemd Files\n$hr"
-ls -al /host/etc/systemd
+ls -al /host/etc/systemd/system
 
 echo -e "\n$hr\nRunner 🏠 dir\n$hr"
 ls -al /home/runner
