@@ -11,8 +11,11 @@ if [ -d /mnt/disks/deeplearning/usr/local/sbin ]; then
   echo -e "\n$hr\nDocker images\n$hr"
   /mnt/disks/deeplearning/usr/bin/docker image ls
 
-  echo -e "\n$hr\nFinal Network\n$hr"
+  echo -e "\n$hr\nNetwork images\n$hr"
   /mnt/disks/deeplearning/usr/bin/docker network inspect bridge
+
+  echo -e "\n$hr\nStart Network\n$hr"
+  /mnt/disks/deeplearning/usr/bin/docker exec mydb supervisorctl start freqtrade
 
 fi
 
