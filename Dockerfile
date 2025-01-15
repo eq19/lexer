@@ -53,12 +53,13 @@ LABEL maintainer="me@eq19.com" \
     org.label-schema.docker.cmd="docker run -it tcardonne/github-runner:latest"
 
 # Find the required package in ubuntu
-#COPY --from=builder /app/marty_binary /usr/local/bin/
-RUN DEBIAN_FRONTEND=noninteractive apt-get update -qq -o=Dpkg::Use-Pty=0 > /dev/null 2>&1 \
+#RUN DEBIAN_FRONTEND=noninteractive apt-get update -qq -o=Dpkg::Use-Pty=0 > /dev/null 2>&1 \
   && sed "s/#.*//" /home/runner/requirements.apt | xargs apt-get install -yq -o=Dpkg::Use-Pty=0 > /dev/null 2>&1
 RUN cd /tmp && wget http://archive.ubuntu.com/ubuntu/pool/main/o/openssl/libssl1.1_1.1.1f-1ubuntu2_amd64.deb && dpkg -i libssl1.1_1.1.1f-1ubuntu2_amd64.deb
 
 # Install dependencies
+COPY --from=builder /usr/local/lib /usr/local/lib
+ENV LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:/usr/local/lib
 #RUN cd /home/runner && mkdir xml && DOXYGEN=$(doxygen > /dev/null 2>&1)
 #RUN cmake -S . -B build -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=./.install
 RUN npm install --package-lock-only redis talib pg mathjs gauss commander handlebars object-assign winston xml2js && npm ci
