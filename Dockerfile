@@ -1,4 +1,11 @@
-ARG DEBIAN_FRONTEND=noninteractive
+# Stage 1: Build marty
+FROM debian:bullseye-slim AS builder
+RUN apt-get update && apt-get install -y build-essential ...
+WORKDIR /app
+COPY marty_source/ .
+RUN make && make install
+
+# Stage 2: Runtime image
 ARG FROM=node:lts-bookworm-slim
 FROM ${FROM}
 
@@ -39,8 +46,9 @@ LABEL maintainer="me@eq19.com" \
     org.label-schema.docker.cmd="docker run -it tcardonne/github-runner:latest"
 
 # Find the required package in ubuntu
-RUN DEBIAN_FRONTEND=noninteractive apt-get update -qq -o=Dpkg::Use-Pty=0 > /dev/null 2>&1
-RUN sed "s/#.*//" /home/runner/requirements.apt | xargs apt-get install -yq -o=Dpkg::Use-Pty=0 > /dev/null 2>&1
+#COPY --from=builder /app/marty_binary /usr/local/bin/
+RUN DEBIAN_FRONTEND=noninteractive apt-get update -qq -o=Dpkg::Use-Pty=0 > /dev/null 2>&1 \
+  && sed "s/#.*//" /home/runner/requirements.apt | xargs apt-get install -yq -o=Dpkg::Use-Pty=0 > /dev/null 2>&1
 RUN cd /tmp && wget http://archive.ubuntu.com/ubuntu/pool/main/o/openssl/libssl1.1_1.1.1f-1ubuntu2_amd64.deb && dpkg -i libssl1.1_1.1.1f-1ubuntu2_amd64.deb
 
 # Install dependencies
