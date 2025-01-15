@@ -5,6 +5,34 @@ WORKDIR /app
 COPY marty_source/ .
 RUN make && make install
 
+
+
+sudo apt-get install coreutils build-essential clang gfortran libgsl-dev libgslcblas0 qtbase5-dev qtchooser qt5-qmake qtbase5-dev-tools dvipng cmake lcov texlive texlive-latex-extra texlive-luatex -y
+    - name: configure
+      run: |
+        mkdir build
+        cd build
+        export CXX=clang++
+        export CC=clang
+        export FC=gfortran
+        cmake ..
+    - name: make
+      run: |
+        cd build
+        make
+    - name: install
+      run: |
+        cd build
+        sudo make install
+    - name: test
+      run: |
+        cd build
+        export LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:/usr/local/lib
+        ctest --output-on-failure
+
+
+
+
 # Stage 2: Runtime image
 ARG FROM=node:lts-bookworm-slim
 FROM ${FROM}
