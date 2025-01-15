@@ -1,18 +1,6 @@
-# Stage 1: Build marty
-FROM debian:bullseye-slim AS builder
-RUN apt-get update && apt-get install -y build-essential clang cmake coreutils dvipng gfortran imagemagick libgsl-dev libgslcblas0 lcov pkg-config qtbase5-dev qtchooser qt5-qmake qtbase5-dev-tools texlive texlive-latex-extra texlive-luatex
-
-ENV CXX=clang++
-ENV CC=clang
-ENV FC=gfortran
-
-COPY . .
-#RUN mkdir build && cd build && cmake .. && make && make install
-ENV LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:/usr/local/lib
-#RUN ctest --output-on-failure
-
-# Stage 2: Runtime image
-FROM node:lts-bookworm-slim
+ARG DEBIAN_FRONTEND=noninteractive
+ARG FROM=node:lts-bookworm-slim
+FROM ${FROM}
 
 ENV RUNNER_NAME=""
 ENV RUNNER_TOKEN=""
@@ -51,13 +39,11 @@ LABEL maintainer="me@eq19.com" \
     org.label-schema.docker.cmd="docker run -it tcardonne/github-runner:latest"
 
 # Find the required package in ubuntu
-RUN DEBIAN_FRONTEND=noninteractive apt-get update -qq -o=Dpkg::Use-Pty=0 > /dev/null 2>&1 \
-  && sed "s/#.*//" /home/runner/requirements.apt | xargs apt-get install -yq -o=Dpkg::Use-Pty=0 > /dev/null 2>&1
+RUN DEBIAN_FRONTEND=noninteractive apt-get update -qq -o=Dpkg::Use-Pty=0 > /dev/null 2>&1
+RUN sed "s/#.*//" /home/runner/requirements.apt | xargs apt-get install -yq -o=Dpkg::Use-Pty=0 > /dev/null 2>&1
 RUN cd /tmp && wget http://archive.ubuntu.com/ubuntu/pool/main/o/openssl/libssl1.1_1.1.1f-1ubuntu2_amd64.deb && dpkg -i libssl1.1_1.1.1f-1ubuntu2_amd64.deb
 
 # Install dependencies
-COPY --from=builder /usr/local/lib /usr/local/lib
-ENV LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:/usr/local/lib
 #RUN cd /home/runner && mkdir xml && DOXYGEN=$(doxygen > /dev/null 2>&1)
 #RUN cmake -S . -B build -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=./.install
 RUN npm install --package-lock-only redis talib pg mathjs gauss commander handlebars object-assign winston xml2js && npm ci
