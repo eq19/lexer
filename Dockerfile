@@ -1,6 +1,6 @@
 # Stage 1: Build marty
 FROM debian:bullseye-slim AS builder
-RUN apt-get update && apt-get install -y build-essential clang cmake coreutils dvipng gfortran libgsl-dev libgslcblas0 pkg-config qtbase5-dev qtchooser qt5-qmake qtbase5-dev-tools lcov texlive texlive-latex-extra texlive-luatex
+RUN apt-get update && apt-get install -y build-essential clang cmake coreutils dvipng gfortran imagemagick libgsl-dev libgslcblas0 lcov pkg-config qtbase5-dev qtchooser qt5-qmake qtbase5-dev-tools texlive texlive-latex-extra texlive-luatex
 
 ENV CXX=clang++
 ENV CC=clang
