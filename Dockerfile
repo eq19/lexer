@@ -7,8 +7,7 @@ ENV CC=clang
 ENV FC=gfortran
 
 COPY . .
-WORKDIR build
-RUN cd build && cmake .. && make && make install
+RUN mkdir build && cd build && cmake .. && make && make install
 ENV LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:/usr/local/lib
 RUN ctest --output-on-failure
 
