@@ -13,8 +13,7 @@ ENV LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:/usr/local/lib
 RUN ctest --output-on-failure
 
 # Stage 2: Runtime image
-ARG FROM=node:lts-bookworm-slim
-FROM ${FROM}
+FROM node:lts-bookworm-slim
 
 ENV RUNNER_NAME=""
 ENV RUNNER_TOKEN=""
