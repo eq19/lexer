@@ -15,8 +15,8 @@ if [ -d /mnt/disks/deeplearning/usr/local/sbin ]; then
   /mnt/disks/deeplearning/usr/bin/docker network inspect bridge
 
   echo -e "\n$hr\nStart Network\n$hr"
-  /mnt/disks/deeplearning/usr/bin/docker exec mydb supervisorctl start freqtrade
-  /mnt/disks/deeplearning/usr/bin/docker exec mydb supervisorctl start monitor_freqtrade
+  /mnt/disks/deeplearning/usr/bin/docker exec mydb systemctl start freqtrade
+  #/mnt/disks/deeplearning/usr/bin/docker exec mydb systemctl start monitor_freqtrade
 
 fi
 
