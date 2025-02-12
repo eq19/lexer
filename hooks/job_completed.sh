@@ -20,5 +20,5 @@ if [ -d /mnt/disks/deeplearning/usr/local/sbin ]; then
 
 fi
 
-gh variable set RERUN_RUNNER --body "false"
+#gh variable set RERUN_RUNNER --body "false"
 echo -e "\njob completed"
