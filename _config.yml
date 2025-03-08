@@ -4,7 +4,7 @@ span: span15
 title: eQuantum
 baseurl: /lexer
 repository: eq19/lexer
-action: eq19/feed/actions/runs/12004975435
+action: eq19/feed/actions/runs/13733177233
 description: An attempt to discover the Final Theory
 
 #debug:
@@ -15,6 +15,7 @@ description: An attempt to discover the Final Theory
 lsi: false
 incremental: true
 highlighter: rouge
+plugins_dir: _plugins
 
 gist:
   noscript: false
@@ -27,8 +28,8 @@ readme_index:
   with_frontmatter: true
 
 exclude:
-  - vendor
   - LICENSE
+  - vendor/
   - action.yml  
   - Dockerfile
 
