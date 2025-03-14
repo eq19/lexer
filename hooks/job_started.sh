@@ -32,6 +32,7 @@ curl -s "http://metadata.google.internal/computeMetadata/v1/instance/attributes/
   -H "Metadata-Flavor: Google" -o cloud-config.yml
 #Expected one of --config-file, --system or --docs arguments
 sudo cloud-init schema --config-file cloud-config.yml
+pwd && cat cloud-config.yml
 echo -e "\n$hr\n"
 grep -i error /host/var/log/cloud-init.log
 echo -e "\n$hr\n"
