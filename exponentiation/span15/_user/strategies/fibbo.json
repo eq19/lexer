@@ -36,19 +36,19 @@
       "sell_stoch_osc": 85
     },
     "protection": {
-      "cooldown_lookback": 7,
-      "low_profit_trade_limit": 8,
-      "max_drawdown_trade_limit": 10,
-      "stop_duration": 28,
-      "trade_limit": 4,
-      "use_low_profit": false,
-      "use_max_drawdown_protection": true,
-      "use_stop_protection": true
+      "cooldown_lookback": 30,
+      "low_profit_trade_limit": 9,
+      "max_drawdown_trade_limit": 2,
+      "stop_duration": 107,
+      "trade_limit": 5,
+      "use_low_profit": true,
+      "use_max_drawdown_protection": false,
+      "use_stop_protection": false
     },
     "stoploss": {
-      "stoploss": -0.258
+      "stoploss": -0.11
     }
   },
   "ft_stratparam_v": 1,
-  "export_time": "2025-03-26 04:38:00.110552+00:00"
+  "export_time": "2025-03-27 05:43:40.081985+00:00"
 }
