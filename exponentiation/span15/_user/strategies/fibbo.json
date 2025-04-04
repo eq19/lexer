@@ -46,9 +46,9 @@
       "use_stop_protection": true
     },
     "stoploss": {
-      "stoploss": -0.151
+      "stoploss": -0.325
     }
   },
   "ft_stratparam_v": 1,
-  "export_time": "2025-04-03 13:13:14.429115+00:00"
+  "export_time": "2025-04-04 17:02:46.205956+00:00"
 }
