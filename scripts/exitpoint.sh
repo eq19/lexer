@@ -5,11 +5,6 @@ if [[ -z $RUNNER_NAME ]]; then
     export RUNNER_NAME=${HOSTNAME}
 fi
 
-if [[ -z $RUNNER_WORK_DIRECTORY ]]; then
-    echo "RUNNER_WORK_DIRECTORY environment variable is not set, using '_work'."
-    export RUNNER_WORK_DIRECTORY="_work"
-fi
-
 if [[ -z $RUNNER_TOKEN && -z $GITHUB_ACCESS_TOKEN ]]; then
     echo "Error : You need to set RUNNER_TOKEN (or GITHUB_ACCESS_TOKEN) environment variable."
     exit 1
@@ -33,9 +28,10 @@ if [[ -n $RUNNER_LABELS ]]; then
     CONFIG_OPTS="${CONFIG_OPTS} --labels ${RUNNER_LABELS}"
 fi
 
-if [[ -f ".runner" ]]; then
-    echo "Runner already configured. Skipping config."
-else
+if [[ -f /home/runner/_site/_config.yml ]]; then
+    FOLDER=$(yq '.span' /home/runner/_site/_config.yml)
+    export RUNNER_WORK_DIRECTORY=$(eval echo $FOLDER)
+
     TARGET_REPOSITORY=$(yq '.repository' /home/runner/_site/_config.yml)
     if [[ "$TARGET_REPOSITORY" != *"eq19/"*]]; then
         SCOPE="orgs"
