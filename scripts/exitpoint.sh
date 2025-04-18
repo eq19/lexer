@@ -10,11 +10,6 @@ if [[ -z $RUNNER_TOKEN && -z $GITHUB_ACCESS_TOKEN ]]; then
     exit 1
 fi
 
-if [[ -z $RUNNER_REPOSITORY_URL && -z $RUNNER_ORGANIZATION_URL ]]; then
-    echo "Error : You need to set the RUNNER_REPOSITORY_URL (or RUNNER_ORGANIZATION_URL) environment variable."
-    exit 1
-fi
-
 if [[ -z $RUNNER_REPLACE_EXISTING ]]; then
     export RUNNER_REPLACE_EXISTING="true"
 fi
