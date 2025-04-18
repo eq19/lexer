@@ -37,12 +37,12 @@ if [[ -f ".runner" ]]; then
     echo "Runner already configured. Skipping config."
 else
     TARGET_REPOSITORY=$(yq '.span' /home/runner/_site/_config.yml)
-    if [[ ! -z $RUNNER_ORGANIZATION_URL ]]; then
+    if [[ "$TARGET_REPOSITORY" != *eq19/*]]; then
         SCOPE="orgs"
         RUNNER_URL="${RUNNER_ORGANIZATION_URL}"
     else
         SCOPE="repos"
-        RUNNER_URL="${RUNNER_REPOSITORY_URL}"
+        RUNNER_URL="https://github.com/${TARGET_REPOSITORY}"
     fi
 
     if [[ -n $GITHUB_ACCESS_TOKEN ]]; then
