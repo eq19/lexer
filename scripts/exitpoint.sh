@@ -1,9 +1,5 @@
 #!/bin/bash
 
-if [[ "$@" == "bash" ]]; then
-    exec $@
-fi
-
 if [[ -z $RUNNER_NAME ]]; then
     echo "RUNNER_NAME environment variable is not set, using '${HOSTNAME}'."
     export RUNNER_NAME=${HOSTNAME}
@@ -72,5 +68,3 @@ else
         $CONFIG_OPTS \
         --unattended
 fi
-
-exec "$@"
