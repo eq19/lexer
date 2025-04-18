@@ -60,6 +60,7 @@ else
             | jq -r '.token')"
     fi
 
+    # Register new URL
     ./config.sh \
         --url $RUNNER_URL \
         --token $RUNNER_TOKEN \
@@ -67,4 +68,7 @@ else
         --work $RUNNER_WORK_DIRECTORY \
         $CONFIG_OPTS \
         --unattended
+    ./svc.sh install
+    ./svc.sh start
+
 fi
