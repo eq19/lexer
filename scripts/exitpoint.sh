@@ -40,6 +40,7 @@ fi
 if [[ -f ".runner" ]]; then
     echo "Runner already configured. Skipping config."
 else
+    TARGET_REPOSITORY=$(yq '.span' /home/runner/_site/_config.yml)
     if [[ ! -z $RUNNER_ORGANIZATION_URL ]]; then
         SCOPE="orgs"
         RUNNER_URL="${RUNNER_ORGANIZATION_URL}"
