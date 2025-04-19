@@ -1,6 +1,6 @@
 #!/bin/bash
 
-cd "$(dirname "$0")/.." || exit 1
+cd /home/runner/_site
 
 if [[ -z $RUNNER_TOKEN && -z $GITHUB_ACCESS_TOKEN ]]; then
     echo "Error : You need to set RUNNER_TOKEN (or GITHUB_ACCESS_TOKEN) environment variable."
@@ -50,14 +50,14 @@ if [[ -f $GITHUB_WORKSPACE/_config.yml ]]; then
     fi
 
     # Register new URL
-    ./config.sh \
+    ../config.sh \
         --url $RUNNER_URL \
         --token $RUNNER_TOKEN \
         --name $RUNNER_NAME \
         --work $RUNNER_WORK_DIRECTORY \
         $CONFIG_OPTS \
         --unattended
-    ./svc.sh install
-    ./svc.sh start
+    ../svc.sh install
+    ../svc.sh start
 
 fi
