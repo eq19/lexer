@@ -23,11 +23,11 @@ if [[ -n $RUNNER_LABELS ]]; then
     CONFIG_OPTS="${CONFIG_OPTS} --labels ${RUNNER_LABELS}"
 fi
 
-if [[ -f /home/runner/_site/_config.yml ]]; then
-    FOLDER=$(yq '.span' /home/runner/_site/_config.yml)
+if [[ -f $GITHUB_WORKSPACE/_config.yml ]]; then
+    FOLDER=$(yq '.span' $GITHUB_WORKSPACE/_config.yml)
     export RUNNER_WORK_DIRECTORY=$(eval echo $FOLDER)
 
-    TARGET_REPOSITORY=$(yq '.repository' /home/runner/_site/_config.yml)
+    TARGET_REPOSITORY=$(yq '.repository' $GITHUB_WORKSPACE/_config.yml)
     if [[ "$TARGET_REPOSITORY" != *"eq19/"*]]; then
         SCOPE="orgs"
         RUNNER_URL="https://github.com/${TARGET_REPOSITORY%%/*}"
