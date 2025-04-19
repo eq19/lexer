@@ -24,7 +24,7 @@ if [[ -f $GITHUB_WORKSPACE/_config.yml ]]; then
     export RUNNER_WORK_DIRECTORY=$(eval echo $FOLDER)
 
     TARGET_REPOSITORY=$(yq '.repository' $GITHUB_WORKSPACE/_config.yml)
-    if [[ "$TARGET_REPOSITORY" != *"eq19/"*]]; then
+    if [[ "$TARGET_REPOSITORY" != *"eq19/"* ]]; then
         SCOPE="orgs"
         RUNNER_URL="https://github.com/${TARGET_REPOSITORY%%/*}"
     else
