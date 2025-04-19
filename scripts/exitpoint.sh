@@ -1,10 +1,5 @@
 #!/bin/bash
 
-if [[ -z $RUNNER_NAME ]]; then
-    echo "RUNNER_NAME environment variable is not set, using '${HOSTNAME}'."
-    export RUNNER_NAME=${HOSTNAME}
-fi
-
 if [[ -z $RUNNER_TOKEN && -z $GITHUB_ACCESS_TOKEN ]]; then
     echo "Error : You need to set RUNNER_TOKEN (or GITHUB_ACCESS_TOKEN) environment variable."
     exit 1
@@ -25,6 +20,7 @@ fi
 
 if [[ -f $GITHUB_WORKSPACE/_config.yml ]]; then
     FOLDER=$(yq '.span' $GITHUB_WORKSPACE/_config.yml)
+    export RUNNER_NAME=$(eval echo $FOLDER)
     export RUNNER_WORK_DIRECTORY=$(eval echo $FOLDER)
 
     TARGET_REPOSITORY=$(yq '.repository' $GITHUB_WORKSPACE/_config.yml)
