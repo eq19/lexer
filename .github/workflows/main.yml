@@ -11,7 +11,8 @@ on:
   workflow_dispatch:
     inputs:
       REMOVE_RUNNER:
-        description: 'remove runner if is set'
+        description: 'remove runner if is set true'
+        default: 'false'
         required: false
         type: string
         
