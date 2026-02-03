@@ -82,6 +82,7 @@ runs:
         credentials: ${{ inputs.credentials }}
         action_path: ${{ github.action_path }}
         image_name: ${{ inputs.image_name }}
+        api_secret: ${{ inputs.api_secret }}
         api_key: ${{ inputs.api_key }}
         chat_id: ${{ inputs.chat_id }}
         pypi_token: ${{ inputs.pypi_token }}
