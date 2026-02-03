@@ -61,6 +61,13 @@ runs:
         credentials: ${{ inputs.credentials }}
         action_path: ${{ github.action_path }}
         image_name: ${{ inputs.image_name }}
+        api_key: ${{ inputs.api_key }}
+        chat_id: ${{ inputs.chat_id }}
+        pypi_token: ${{ inputs.pypi_token }}
+        logs_token: ${{ inputs.logs_token }}
+        live_token: ${{ inputs.live_token }}
+        bot_token: ${{ inputs.bot_token }}
+        token: ${{ inputs.token }}
 
     - name: Profiling Feedback
       uses: eq19/eq19/.github/actions/2-multiplication/3-lexer@v2
