@@ -1,16 +1,16 @@
-id: 4
+id: 33
 user: eq19
-span: span15
+span: span-14
 title: eQuantum
 baseurl: /lexer
 repository: eq19/lexer
-action: eq19/feed/actions/runs/15303046935
-description: An attempt to discover the Final Theory
+action: eq19/feed/actions/runs/25971678729
+description: An endeavor to discover the Final Theory
 
-#debug:
-#  dist: false
-#  compress: true
-#  shortcodes: true
+debug:
+  dist: false
+  compress: true
+  shortcodes: true
 
 lsi: false
 incremental: true
@@ -34,7 +34,6 @@ exclude:
   - Dockerfile
 
 plugins:
-  - jemoji
   - jekyll-gist
   - jekyll-avatar
   - jekyll-mentions
@@ -48,6 +47,6 @@ plugins:
   - jekyll-optional-front-matter
 
 track:
-  spin: [0, 3]
+  spin: [13, 3]
   pinned: [maps, feed, lexer, parser, syntax, grammar]
   organization: [Chetabahana, FeedMapping, GlobalZones, HybridModels, JunctionTerms, KernelPatterns, MappingSystem, NeuralSystem, ObjectModules, VirtualNetworks, WeakNegative, WeakPositive, ZeroWeak]
