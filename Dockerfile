@@ -38,6 +38,18 @@ LABEL maintainer="me@eq19.github.io" \
     org.label-schema.vendor="Thomas Cardonne" \
     org.label-schema.docker.cmd="docker run -it tcardonne/github-runner:latest"
 
+# Install the current GitHub CLI
+RUN set -eux; \
+    DEBIAN_FRONTEND=noninteractive apt-get update -qq -o=Dpkg::Use-Pty=0; \
+    apt-get install -y --no-install-recommends ca-certificates curl gnupg; \
+    mkdir -p -m 0755 /etc/apt/keyrings; \
+    curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg -o /etc/apt/keyrings/githubcli-archive-keyring.gpg; \
+    chmod go+r /etc/apt/keyrings/githubcli-archive-keyring.gpg; \
+    echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" > /etc/apt/sources.list.d/github-cli.list; \
+    apt-get update -qq -o=Dpkg::Use-Pty=0; \
+    apt-get install -y --no-install-recommends gh; \
+    gh --version
+
 # Find the required package in ubuntu
 RUN DEBIAN_FRONTEND=noninteractive apt-get update -qq -o=Dpkg::Use-Pty=0 > /dev/null 2>&1
 RUN sed "s/#.*//" /home/runner/requirements.apt | xargs apt-get install -yq -o=Dpkg::Use-Pty=0 > /dev/null 2>&1
