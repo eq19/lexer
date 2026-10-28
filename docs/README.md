@@ -752,7 +752,7 @@ We apply this progression to the rest of the space, and find that the breakdown 
 
 [![IMG_20240114_014704](https://user-images.githubusercontent.com/36441664/262341222-6c71005e-2f44-45d9-ac42-b1464c045a45.png)](https://eq19.github.io/grammar/identition/#the-77-principles)
 
-Nothing is going to be easly about the nature of prime numbers but they demonstrably congruent to something organized. Let's discuss starting with the _[addition zones](https://eq19.github.io/addition/)_.
+Nothing is going to be easly about the nature of prime numbers but they demonstrably congruent to something organized. Let's discuss it starting with the _[addition zones](https://eq19.github.io/addition/)_.
 
 **[eQuantum Project](https://github.com/eq19)**   
 Copyright © 2023-2026
