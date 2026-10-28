@@ -399,8 +399,8 @@ elif [[ "${JOBS_ID}" == "3" ]]; then
       $DOCKER exec mydb mkdir -p "$(dirname "$EXCHANGE_DRY")"
       $DOCKER exec mydb curl -sf -o "$EXCHANGE_DRY" "$CONFIG_EXCHANGE"
       $DOCKER exec mydb bash -c "jq --argjson pairs '$PAIRS' '.exchange.pair_whitelist = \$pairs' '$EXCHANGE_DRY' > config.tmp && mv config.tmp '$EXCHANGE_DRY'"
-   fi 
-fi
+    fi 
+  fi
 
   for idx in "${!DIRS[@]}"; do
     PARAM_NAME="${PARAMS[$idx]}"
@@ -460,6 +460,10 @@ fi
       "curl -s -H 'Authorization: token $GH_TOKEN' -H 'Accept: application/vnd.github.v3+json' \
       https://api.github.com/repos/$GITHUB_REPOSITORY/actions/variables/${PARAM_NAME} \
       | jq -r '.value' > ${DIR_PATH}/strategies/fibbo.json"
+    $DOCKER exec -e DIR_PATH="$DIR_PATH" mydb bash -c '
+      jq --slurpfile fibbo "$DIR_PATH/strategies/fibbo.json" ".stoploss = \$fibbo[0].params.stoploss.stoploss" \
+      "$DIR_PATH/config.json" > /tmp/c && mv /tmp/c "$DIR_PATH/config.json"
+    '
     $DOCKER exec -e BEARER="$BEARER" mydb bash -c \
       "bash ${SCRIPT_PATH} ${ID:-30} $JOBS_ID $APP_PATH $DIR_PATH $PARAM_NAME $ARTIFACT $HYPEROPT_PARAM $COMPILE_FILE $BYPASS_LEXERING"
 
