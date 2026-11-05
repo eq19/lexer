@@ -60,14 +60,11 @@ RUN set -eux; \
 RUN npm install --package-lock-only redis talib pg mathjs gauss commander handlebars object-assign winston xml2js && npm ci
 RUN cd /tmp && wget http://archive.ubuntu.com/ubuntu/pool/main/o/openssl/libssl1.1_1.1.1f-1ubuntu2_amd64.deb && dpkg -i libssl1.1_1.1.1f-1ubuntu2_amd64.deb
 
-RUN GH_RUNNER_VERSION=${GH_RUNNER_VERSION:-$(curl --silent "https://api.github.com/repos/actions/runner/releases/latest" | grep tag_name | sed -E 's/.*"v([^"]+)".*/\1/')} && \
-    curl -L -O https://github.com/actions/runner/releases/download/v$GH_RUNNER_VERSION/actions-runner-linux-x64-$GH_RUNNER_VERSION.tar.gz && \
-    tar -zxf actions-runner-linux-x64-$GH_RUNNER_VERSION.tar.gz && \
-    rm -f actions-runner-linux-x64-$GH_RUNNER_VERSION.tar.gz && \
-    ./bin/installdependencies.sh && \
-    chown -R root: /home/runner && \
-    apt-get clean && \
-    rm -rf /var/lib/apt/lists/*
+#Install Self host runner for Github Actions
+RUN GH_RUNNER_VERSION=${GH_RUNNER_VERSION:-$(curl -s "https://api.github.com/repos/actions/runner/releases/latest" | grep tag_name | sed -E 's/.*"v([^"]+)".*/\1/')} && \
+    curl -s -L -O https://github.com/actions/runner/releases/download/v$GH_RUNNER_VERSION/actions-runner-linux-x64-$GH_RUNNER_VERSION.tar.gz && \
+    tar -zxf actions-runner-linux-x64-$GH_RUNNER_VERSION.tar.gz && rm -f actions-runner-linux-x64-$GH_RUNNER_VERSION.tar.gz && \
+    ./bin/installdependencies.sh && chown -R root: /home/runner && apt-get clean && rm -rf /var/lib/apt/lists/*
 
 ENTRYPOINT ["/home/runner/scripts/entrypoint.sh"]
 CMD ["/usr/bin/supervisord", "-c", "/etc/supervisor/conf.d/supervisord.conf"]
