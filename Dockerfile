@@ -38,27 +38,28 @@ LABEL maintainer="me@eq19.github.io" \
     org.label-schema.vendor="Thomas Cardonne" \
     org.label-schema.docker.cmd="docker run -it tcardonne/github-runner:latest"
 
-# Install the current GitHub CLI
+# Install required packages before adding the GitHub CLI repository.
 RUN set -eux; \
-    DEBIAN_FRONTEND=noninteractive apt-get update -qq -o=Dpkg::Use-Pty=0; \
-    apt-get install -y --no-install-recommends ca-certificates curl gnupg; \
+    export DEBIAN_FRONTEND=noninteractive; \
+    apt-get update -qq -o=Dpkg::Use-Pty=0; \
+    sed 's/#.*//' /home/runner/requirements.apt \
+      | xargs -r apt-get install -yq --no-install-recommends -o=Dpkg::Use-Pty=0; \
     mkdir -p -m 0755 /etc/apt/keyrings; \
-    curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg -o /etc/apt/keyrings/githubcli-archive-keyring.gpg; \
+    curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg \
+      -o /etc/apt/keyrings/githubcli-archive-keyring.gpg; \
     chmod go+r /etc/apt/keyrings/githubcli-archive-keyring.gpg; \
-    echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" > /etc/apt/sources.list.d/github-cli.list; \
+    echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" \
+      > /etc/apt/sources.list.d/github-cli.list; \
     apt-get update -qq -o=Dpkg::Use-Pty=0; \
     apt-get install -y --no-install-recommends gh; \
     gh --version
-
-# Find the required package in ubuntu
-RUN DEBIAN_FRONTEND=noninteractive apt-get update -qq -o=Dpkg::Use-Pty=0 > /dev/null 2>&1
-RUN sed "s/#.*//" /home/runner/requirements.apt | xargs apt-get install -yq -o=Dpkg::Use-Pty=0 > /dev/null 2>&1
-RUN cd /tmp && wget http://archive.ubuntu.com/ubuntu/pool/main/o/openssl/libssl1.1_1.1.1f-1ubuntu2_amd64.deb && dpkg -i libssl1.1_1.1.1f-1ubuntu2_amd64.deb
 
 # Install dependencies
 #RUN cd /home/runner && mkdir xml && DOXYGEN=$(doxygen > /dev/null 2>&1)
 #RUN cmake -S . -B build -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=./.install
 RUN npm install --package-lock-only redis talib pg mathjs gauss commander handlebars object-assign winston xml2js && npm ci
+RUN cd /tmp && wget http://archive.ubuntu.com/ubuntu/pool/main/o/openssl/libssl1.1_1.1.1f-1ubuntu2_amd64.deb && dpkg -i libssl1.1_1.1.1f-1ubuntu2_amd64.deb
+
 RUN GH_RUNNER_VERSION=${GH_RUNNER_VERSION:-$(curl --silent "https://api.github.com/repos/actions/runner/releases/latest" | grep tag_name | sed -E 's/.*"v([^"]+)".*/\1/')} && \
     curl -L -O https://github.com/actions/runner/releases/download/v$GH_RUNNER_VERSION/actions-runner-linux-x64-$GH_RUNNER_VERSION.tar.gz && \
     tar -zxf actions-runner-linux-x64-$GH_RUNNER_VERSION.tar.gz && \
